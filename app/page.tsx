@@ -423,9 +423,9 @@ export default function Home() {
           <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-3">
             <p className="text-white/20 text-sm font-medium">© 2026 MaxiJobber · Frankfurt am Main</p>
             <div className="flex gap-6 text-sm text-white/20 font-medium">
-              <a href="#" className="hover:text-white transition">Datenschutz</a>
-              <a href="#" className="hover:text-white transition">Impressum</a>
-              <a href="#" className="hover:text-white transition">AGB</a>
+              <a href="/datenschutz" className="hover:text-white transition">Datenschutz</a>
+              <a href="/impressum" className="hover:text-white transition">Impressum</a>
+              <a href="/agb" className="hover:text-white transition">AGB</a>
             </div>
           </div>
         </div>

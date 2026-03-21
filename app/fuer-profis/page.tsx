@@ -172,8 +172,8 @@ export default function FuerProfis() {
           <p className="text-white/20 text-sm font-medium">© 2026 MaxiJobber · Frankfurt am Main</p>
           <div className="flex gap-6 text-sm text-white/30 font-medium">
             <a href="/legal/minijob-guide" className="hover:text-white transition">Minijob-Guide</a>
-            <a href="#" className="hover:text-white transition">Datenschutz</a>
-            <a href="#" className="hover:text-white transition">Impressum</a>
+            <a href="/datenschutz" className="hover:text-white transition">Datenschutz</a>
+            <a href="/impressum" className="hover:text-white transition">Impressum</a>
           </div>
         </div>
       </footer>
