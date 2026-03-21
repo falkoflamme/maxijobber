@@ -62,7 +62,7 @@ export default function WorkerSlideshow() {
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi])
 
   return (
-    <section className="py-28 px-8 bg-white border-t border-gray-200">
+    <section className="py-28 px-8 bg-[#F9F9F9] border-t border-gray-200">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -87,7 +87,7 @@ export default function WorkerSlideshow() {
               <div key={w.name} className="shrink-0 w-[300px]">
                 <div
                   className="bg-white border-2 border-[#1a1a1a] rounded-xl p-6 h-full flex flex-col transition-all duration-200 hover:shadow-[6px_6px_0px_#F5C518] group"
-                  style={{ boxShadow: '4px 4px 0px #1a1a1a' }}
+                  style={{ boxShadow: 'clamp(2px, 0.5vw, 4px) clamp(2px, 0.5vw, 4px) 0px #1a1a1a' }}
                 >
                   {/* Photo + Info */}
                   <div className="flex items-center gap-3 mb-5">

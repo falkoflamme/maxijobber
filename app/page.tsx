@@ -104,6 +104,16 @@ export default function Home() {
       {/* ── 4. FACHKRÄFTE SLIDESHOW ── */}
       <WorkerSlideshow />
 
+      {/* ── 4.5 CONNECTOR ── */}
+      <div className="bg-[#F5C518] py-8 px-8 text-center">
+        <p className="text-5xl md:text-[48px] font-black tracking-tighter text-black leading-none">
+          Beide Seiten gewinnen.
+        </p>
+        <p className="text-base text-black/70 font-medium mt-3">
+          Das ist das System.
+        </p>
+      </div>
+
       {/* ── 5. UNTERNEHMEN SLIDESHOW ── */}
       <EmployerSlideshow />
 
