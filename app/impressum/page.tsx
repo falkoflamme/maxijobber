@@ -20,9 +20,9 @@ export default function Impressum() {
             <h2 className="font-black text-base text-gray-900 mb-3 uppercase tracking-tight">Betreiber</h2>
             <p className="text-gray-500">
               MaxiJobber<br />
-              [Vor- und Nachname]<br />
-              [Straße und Hausnummer]<br />
-              [PLZ] Frankfurt am Main<br />
+              Falko Flamme<br />
+              Ringelstraße 45<br />
+              60385 Frankfurt am Main<br />
               Deutschland
             </p>
           </div>
@@ -37,8 +37,8 @@ export default function Impressum() {
           <div>
             <h2 className="font-black text-base text-gray-900 mb-3 uppercase tracking-tight">Verantwortlich für den Inhalt</h2>
             <p className="text-gray-500">
-              [Vor- und Nachname]<br />
-              [Adresse wie oben]
+              Falko Flamme<br />
+              Ringelstraße 45, 60385 Frankfurt am Main
             </p>
           </div>
 

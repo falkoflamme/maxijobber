@@ -21,9 +21,9 @@ export default function Datenschutz() {
             <p className="text-gray-500">
               Verantwortlicher im Sinne der DSGVO ist:<br /><br />
               MaxiJobber<br />
-              [Vor- und Nachname]<br />
-              [Adresse]<br />
-              Frankfurt am Main<br />
+              Falko Flamme<br />
+              Ringelstraße 45<br />
+              60385 Frankfurt am Main<br />
               E-Mail: <a href="mailto:hallo@maxijobber.de" className="text-yellow-600 hover:underline">hallo@maxijobber.de</a>
             </p>
           </div>
