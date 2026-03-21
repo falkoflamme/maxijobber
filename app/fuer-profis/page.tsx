@@ -91,7 +91,7 @@ export default function FuerProfis() {
               ["Direkter Kontakt", "Unternehmen schreiben dir per WhatsApp oder rufen an. Kein Ticket-System, kein Callcenter."],
               ["Dein Stundensatz", "Du setzt deinen Preis — ab 25 €/h. Kein Agentur-Abzug. Was du verdienst, bekommst du."],
               ["Flexible Einsätze", "Minijob, Teilzeit, Vollzeit — du entscheidest. MaxiJobber passt sich deinem Leben an."],
-              ["Sofort sichtbar", "Profil einreichen, freischalten lassen, gefunden werden. In Frankfurt und ganz Rhein-Main."],
+              ["Schnell sichtbar", "Profil einreichen, freischalten lassen, gefunden werden. In Frankfurt und ganz Rhein-Main."],
               ["Kostenlos für dich", "MaxiJobber ist für Fachkräfte immer kostenlos. Ohne Wenn und Aber."],
             ].map(([title, desc]) => (
               <div key={title} className="border-b border-r-0 border-gray-200 py-8 px-0 md:px-8 md:odd:border-r md:odd:pl-0 md:even:pr-0">

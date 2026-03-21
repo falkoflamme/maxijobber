@@ -95,7 +95,7 @@ export default function FuerUnternehmen() {
               ["Geprüfte Qualifikationen", "Jede Fachkraft wird von MaxiJobber verifiziert — bevor sie online geht. Kein Risiko, keine bösen Überraschungen."],
               ["Transparente Preise", "Jeder Fachkraft-Stundensatz ist öffentlich sichtbar. Ab 25 €/h — fairer Markt, kein Agentur-Aufschlag."],
               ["Direkter Kontakt", "WhatsApp, Telefon oder E-Mail — direkt mit der Person. Keine Plattform-Gebühr pro Nachricht."],
-              ["Schnelle Besetzung", "Verfügbare Fachkräfte sofort erkennbar. Von erstem Klick bis zum Kontakt: oft unter einer Stunde."],
+              ["Schnelle Besetzung", "Verfügbare Fachkräfte direkt erkennbar. Von erstem Klick bis zum Kontakt — oft am selben Tag."],
               ["Keine Registrierung nötig", "Profil-Verzeichnis ist öffentlich. Einfach suchen, finden, kontaktieren — ohne Konto."],
               ["Lokaler Fokus", "Fachkräfte aus Frankfurt und Rhein-Main. Kurze Wege, lokale Kenntnis, kein Ferndienstleister."],
             ].map(([title, desc]) => (

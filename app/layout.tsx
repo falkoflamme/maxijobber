@@ -9,12 +9,12 @@ const geistSans = localFont({
 })
 
 export const metadata: Metadata = {
-  title: 'MaxiJobber — Geprüfte Fachkräfte. Sofort.',
-  description: 'MaxiJobber verbindet geprüfte Fachkräfte direkt mit Unternehmen in Frankfurt — ohne Agentur, ohne Aufschlag.',
+  title: 'MaxiJobber — Geprüfte Fachkräfte für Minijobs in Frankfurt.',
+  description: 'MaxiJobber verbindet geprüfte Fachkräfte direkt mit Unternehmen in Frankfurt — für reguläre Minijobs, ohne Agentur, ohne Aufschlag.',
   keywords: 'Fachkräfte, Frankfurt, Minijob, Elektriker, Handwerk, Vermittlung',
   openGraph: {
-    title: 'MaxiJobber — Geprüfte Fachkräfte. Sofort.',
-    description: 'Die direkte Verbindung zwischen Fachkräften und Unternehmen in Frankfurt.',
+    title: 'MaxiJobber — Geprüfte Fachkräfte für Minijobs in Frankfurt.',
+    description: 'Geprüfte Fachkräfte für reguläre Minijob-Einsätze — direkt, ohne Mittelsmann, ohne Aufschlag.',
     locale: 'de_DE',
     type: 'website',
   },

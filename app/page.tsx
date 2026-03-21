@@ -1,4 +1,5 @@
-import TestimonialSlider from '@/components/TestimonialSlider'
+import WorkerSlideshow from '@/components/WorkerSlideshow'
+import EmployerSlideshow from '@/components/EmployerSlideshow'
 
 export default function Home() {
   return (
@@ -27,7 +28,7 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* ── SECTION 1: HERO ── */}
+      {/* ── 1. HERO ── */}
       <section className="relative px-8 pt-20 pb-28 overflow-hidden bg-[#F5F4F0]">
         <div className="absolute top-0 right-0 w-80 h-full bg-gray-900/[0.03] border-l border-gray-300/60 hidden lg:block" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gray-300" />
@@ -44,9 +45,9 @@ export default function Home() {
           <div className="flex flex-col md:flex-row md:items-end gap-12 mt-2">
             <div>
               <p className="text-xl text-gray-500 max-w-lg leading-relaxed font-medium mb-5">
-                MaxiJobber ist kein Marktplatz für jeden. Wir wählen handverlesen aus —
-                und verbinden nur das beste Handwerk direkt mit den besten Unternehmen.
-                Kein Mittelsmann.
+                MaxiJobber verbindet dich mit geprüften Fachkräften —
+                für reguläre Minijobs direkt und ohne Mittelsmann.
+                Handverlesen. Fair. Transparent.
               </p>
               <div className="inline-flex items-center gap-2 px-3 py-2 border-l-[3px] border-yellow-500 bg-yellow-50">
                 <span className="text-sm font-bold text-yellow-800">Bis zu 538&nbsp;€ steuerfrei im Monat dazuverdienen.</span>
@@ -76,15 +77,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── KOSTENLOS-LEISTE ── */}
+      {/* ── 2. KOSTENLOS-LEISTE ── */}
       <div className="bg-[#1a1a1a] py-5 px-8 text-center">
         <p className="font-black text-yellow-400 text-sm md:text-base uppercase tracking-widest">
-          MAXIJOBBER IST 100% KOSTENLOS — FÜR FACHKRÄFTE UND UNTERNEHMEN.
+          MAXIJOBBER IST 100%&nbsp;KOSTENLOS — FÜR FACHKRÄFTE UND UNTERNEHMEN.
         </p>
         <p className="text-white/40 text-xs font-medium mt-1">Kein Abo. Keine Provision. Keine versteckten Kosten. Nie.</p>
       </div>
 
-      {/* ── SECTION 2: WAS DIE PLATTFORM MACHT ── */}
+      {/* ── 3. WAS MAXIJOBBER MACHT ── */}
       <section className="py-16 px-8 bg-gray-900 text-white">
         <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-px bg-white/5">
           {[
@@ -100,47 +101,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── SECTION 3: ECHTE MENSCHEN ── */}
-      <section className="py-28 px-8 bg-white border-t border-gray-200">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-16">
-            <p className="text-xs font-black uppercase tracking-[0.3em] text-yellow-500 mb-4">Echte Fachkräfte</p>
-            <h2 className="text-5xl md:text-6xl font-black tracking-tighter">ECHTE MENSCHEN.<br />ECHTE SKILLS.</h2>
-            <p className="text-gray-400 font-medium mt-4 max-w-xl">Keine Datenbank-Einträge. Echte Profis mit echten Preisen — handverlesen von MaxiJobber.</p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              { name: "Michael Reuter", job: "Elektriker", years: "8 Jahre", city: "Frankfurt Mitte", rate: "42 €/h", quote: "Ich liefere saubere Arbeit — pünktlich, ohne Ausreden." },
-              { name: "Sandra Koch", job: "Sanitärinstallateur", years: "5 Jahre", city: "Sachsenhausen", rate: "38 €/h", quote: "Qualität erkennt man erst wenn der Wasserhahn nach 5 Jahren noch hält." },
-              { name: "Thomas Braun", job: "Maler & Lackierer", years: "12 Jahre", city: "Bornheim", rate: "34 €/h", quote: "Details machen den Unterschied. Das weiß ich nach 12 Jahren." },
-              { name: "Ayse Demir", job: "Trockenbauerin", years: "6 Jahre", city: "Nordend", rate: "36 €/h", quote: "Ich baue Wände die wirklich gerade sind. Klingt simpel — ist es nicht." },
-            ].map(({ name, job, years, city, rate, quote }) => (
-              <div key={name} className="bg-white border-2 border-black/10 border-t-4 border-t-yellow-400 p-6 shadow-[0_2px_12px_rgba(0,0,0,0.08)] hover:border-[#1a1a1a] hover:shadow-md transition-all">
-                <div className="w-12 h-12 bg-gray-900 flex items-center justify-center text-white font-black text-xl mb-4">
-                  {name[0]}
-                </div>
-                <div className="font-black text-sm mb-0.5">{name}</div>
-                <div className="text-gray-400 text-xs mb-3">{job} · {years} · {city}</div>
-                <p className="text-gray-500 text-xs leading-relaxed italic mb-4">&ldquo;{quote}&rdquo;</p>
-                <div className="flex items-center justify-between">
-                  <span className="font-black text-lg">{rate}</span>
-                  <span className="text-xs font-bold text-green-600 bg-green-50 px-2 py-0.5">Verfügbar</span>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="mt-8 text-center">
-            <a href="/profis" className="inline-block px-8 py-4 font-black border-2 border-gray-900 rounded hover:bg-gray-900 hover:text-white transition text-sm tracking-widest uppercase">
-              Alle Fachkräfte ansehen →
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* ── 4. FACHKRÄFTE SLIDESHOW ── */}
+      <WorkerSlideshow />
 
-      {/* ── TESTIMONIAL SLIDER ── */}
-      <TestimonialSlider />
+      {/* ── 5. UNTERNEHMEN SLIDESHOW ── */}
+      <EmployerSlideshow />
 
-      {/* ── SECTION 4: REALITY CHECK ── */}
+      {/* ── 6. REALITY CHECK ── */}
       <section className="py-28 px-8 bg-[#F5F4F0] border-t border-gray-300">
         <div className="max-w-7xl mx-auto">
           <div className="mb-16">
@@ -157,7 +124,7 @@ export default function Home() {
                   "Ungelernte Kräfte die lernen während sie arbeiten — auf deine Kosten",
                   "Agenturen die 30–50% Aufschlag nehmen ohne Qualitätssicherung",
                   "Keine Ahnung wen du bekommst bis er vor der Tür steht",
-                  "Stundenlohn ohne Preistransparenz — versteckte Kosten überall",
+                  "Preise ohne Transparenz — versteckte Kosten überall",
                   "Kein direkter Ansprechpartner — alles läuft über Callcenter",
                 ].map(item => (
                   <div key={item} className="flex gap-3 items-start">
@@ -175,7 +142,7 @@ export default function Home() {
                   "Direktkontakt — kein Agentur-Aufschlag, kein Ticket-System",
                   "Transparente Profile: Name, Foto, Skills, Stundensatz — alles öffentlich",
                   "Fairer Mindest-Stundensatz ab 25\u00a0€/h — Qualität hat ihren Preis",
-                  "Du sprichst direkt mit der Person die die Arbeit macht",
+                  "Du sprichst direkt mit der Person die den Minijob übernimmt",
                 ].map(item => (
                   <div key={item} className="flex gap-3 items-start">
                     <div className="w-[3px] h-4 bg-yellow-500 shrink-0 mt-1" />
@@ -188,54 +155,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── WIN-WIN-WIN SECTION ── */}
-      <section className="py-20 px-8 bg-[#1a1a1a] text-white">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-px bg-white/10">
-          <div className="p-10 bg-[#1a1a1a]">
-            <div className="text-3xl font-black text-yellow-400 mb-4">↑</div>
-            <h3 className="font-black text-xl mb-2">Mehr Geld. Deine Bedingungen.</h3>
-            <p className="text-xs font-black uppercase tracking-widest text-white/30 mb-4">Für Fachkräfte</p>
-            <div className="space-y-2">
-              {["Bis 538€ steuerfrei im Monat", "Kein Chef der deinen Preis bestimmt", "Wann du willst, wie du willst"].map(i => (
-                <div key={i} className="flex gap-2 items-start">
-                  <div className="w-[2px] h-4 bg-yellow-400 shrink-0 mt-1" />
-                  <span className="text-white/60 text-sm font-medium">{i}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="p-10 bg-[#1a1a1a]">
-            <div className="text-3xl font-black text-yellow-400 mb-4">⚡</div>
-            <h3 className="font-black text-xl mb-2">Sofort. Ohne Risiko.</h3>
-            <p className="text-xs font-black uppercase tracking-widest text-white/30 mb-4">Für Unternehmen</p>
-            <div className="space-y-2">
-              {["Geprüfte Profis — kein Blindflug", "Direktkontakt ohne Aufschlag", "Oft in 24h besetzt"].map(i => (
-                <div key={i} className="flex gap-2 items-start">
-                  <div className="w-[2px] h-4 bg-yellow-400 shrink-0 mt-1" />
-                  <span className="text-white/60 text-sm font-medium">{i}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="p-10 bg-[#1a1a1a]">
-            <div className="text-3xl font-black text-yellow-400 mb-4">∞</div>
-            <h3 className="font-black text-xl mb-2">Qualität trifft Nachfrage.</h3>
-            <p className="text-xs font-black uppercase tracking-widest text-white/30 mb-4">Warum es funktioniert</p>
-            <div className="space-y-2">
-              {["Echter Markt — keine Vermittler", "Faire Preise — beide gewinnen", "Vertrauen durch Transparenz"].map(i => (
-                <div key={i} className="flex gap-2 items-start">
-                  <div className="w-[2px] h-4 bg-yellow-400 shrink-0 mt-1" />
-                  <span className="text-white/60 text-sm font-medium">{i}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-        <p className="text-center text-white/20 text-xs font-black uppercase tracking-widest mt-8">Das ist fair. Für alle.</p>
-      </section>
-
-      {/* ── SECTION 5: FÜR FACHKRÄFTE ── */}
-      <section id="fachkraefte" className="py-28 px-8 bg-white border-t border-gray-200">
+      {/* ── 7. FÜR FACHKRÄFTE ── */}
+      <section className="py-28 px-8 bg-white border-t border-gray-200">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
           <div>
             <p className="text-xs font-black uppercase tracking-[0.3em] text-yellow-500 mb-6">Für Fachkräfte</p>
@@ -245,17 +166,18 @@ export default function Home() {
             </h2>
             <p className="text-gray-500 mb-5 leading-relaxed font-medium text-lg">
               Kein Bewerben, kein Warten, kein Vermittler der 30% mitnimmt.
-              Du setzt deinen Preis, du entscheidest wann du arbeitest.
+              Du setzt deinen Preis, du entscheidest wann du arbeitest —
+              und schließt deinen Minijob-Vertrag direkt mit dem Unternehmen ab.
             </p>
             <div className="inline-flex items-center gap-2 px-3 py-2 border-l-[3px] border-yellow-500 bg-yellow-50 mb-10">
               <span className="text-sm font-bold text-yellow-800">Bis zu 538&nbsp;€ steuerfrei im Monat dazuverdienen.</span>
             </div>
             <div className="space-y-0 mb-12 border-t border-gray-200">
               {[
-                "Geprüftes Profil — sofort Vertrauen bei Auftraggebern",
+                "Geprüftes Profil — dauerhaftes Vertrauen bei Auftraggebern",
                 "Direkte Anfragen per WhatsApp oder Telefon",
                 "Dein Stundensatz ab 25 €/h — fairer Markt, kein Abzug",
-                "Minijob, Teilzeit oder Vollzeit — du entscheidest",
+                "Minijob-Vertrag direkt mit dem Unternehmen — kein Middleman",
               ].map((item) => (
                 <div key={item} className="flex items-center gap-4 py-4 border-b border-gray-200">
                   <div className="w-[3px] h-4 bg-yellow-500 shrink-0" />
@@ -290,7 +212,7 @@ export default function Home() {
                 <div className="text-right shrink-0">
                   <div className="font-black text-sm">{rate}</div>
                   <div className={`text-xs font-semibold mt-0.5 ${avail ? "text-green-600" : "text-gray-400"}`}>
-                    {avail ? "Verfügbar" : "Belegt"}
+                    {avail ? "Bereit für Minijob" : "Belegt"}
                   </div>
                 </div>
               </div>
@@ -300,16 +222,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── SECTION 6: FÜR UNTERNEHMEN ── */}
-      <section id="unternehmen" className="py-28 px-8 bg-[#F5F4F0] border-t border-gray-300">
+      {/* ── 8. FÜR UNTERNEHMEN ── */}
+      <section className="py-28 px-8 bg-[#F5F4F0] border-t border-gray-300">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
-          <div className="bg-white border border-gray-300 p-8">
+          <div className="bg-white border-2 border-[#1a1a1a] p-8" style={{ boxShadow: '4px 4px 0 #1a1a1a' }}>
             <p className="text-xs font-black uppercase tracking-[0.3em] text-gray-400 mb-6">Fachkraft suchen</p>
             <div className="space-y-0 mb-8 border-t border-gray-200">
               {[
                 { label: "Branche", value: "Elektrotechnik" },
                 { label: "Standort", value: "Frankfurt Innenstadt" },
-                { label: "Verfügbarkeit", value: "Ab sofort" },
+                { label: "Einsatz", value: "Regulärer Minijob" },
                 { label: "Stundensatz", value: "ab 38 €/h" },
               ].map(({ label, value }) => (
                 <div key={label} className="flex items-center justify-between py-4 border-b border-gray-200">
@@ -332,15 +254,15 @@ export default function Home() {
             </h2>
             <p className="text-gray-500 mb-10 leading-relaxed font-medium text-lg">
               Kein Recruiting. Kein Headhunter. Kein Bieten.
-              Alle Fachkräfte auf MaxiJobber sind manuell geprüft —
-              Sie sehen nur wen wir wirklich empfehlen.
+              Alle Fachkräfte sind manuell geprüft — Sie schließen den
+              Minijob-Vertrag direkt ab. Ohne Aufschlag.
             </p>
             <div className="space-y-0 mb-12 border-t border-gray-300">
               {[
                 "Manuell geprüfte Profile — kein Spam, kein Risiko",
                 "Transparente Stundensätze ab 25 €/h",
-                "Direktkontakt ohne Agentur-Aufschlag",
-                "Oft in 24h besetzt — lokal in Frankfurt",
+                "Minijob-Vertrag direkt mit der Fachkraft",
+                "Kontakt oft am selben Tag — lokal in Frankfurt",
               ].map((item) => (
                 <div key={item} className="flex items-center gap-4 py-4 border-b border-gray-300">
                   <div className="w-[3px] h-4 bg-yellow-500 shrink-0" />
@@ -355,7 +277,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── SECTION 7: SO FUNKTIONIERT'S ── */}
+      {/* ── 9. WIE ES LÄUFT ── */}
       <section id="wie" className="py-28 px-8 bg-white border-t border-gray-200">
         <div className="max-w-7xl mx-auto">
           <div className="mb-16">
@@ -369,7 +291,7 @@ export default function Home() {
                 {[
                   ["01", "Profil einreichen", "Name, Rolle, Skills, Stundensatz — in 5 Minuten. Kein Konto nötig."],
                   ["02", "Wir prüfen dich", "Wir checken manuell ob du wirklich gut bist. Nur echte Profis kommen rein."],
-                  ["03", "Werde gefunden", "Dein Profil geht online. Unternehmen sehen dich und melden sich direkt."],
+                  ["03", "Minijob vereinbaren", "Unternehmen finden dein Profil und kontaktieren dich direkt — Vertrag direkt zwischen euch."],
                 ].map(([num, title, desc]) => (
                   <div key={num} className="flex gap-6 items-start">
                     <div className="text-3xl font-black text-gray-200 leading-none shrink-0 w-10">{num}</div>
@@ -389,8 +311,8 @@ export default function Home() {
               <div className="space-y-8">
                 {[
                   ["01", "Verzeichnis durchsuchen", "Alle geprüften Fachkräfte in Frankfurt — filterbar nach Rolle, Stadt, Verfügbarkeit."],
-                  ["02", "Richtige Person finden", "Stundensatz, Skills und Bio sind transparent. Kein Rätselraten."],
-                  ["03", "Direkt Kontakt aufnehmen", "WhatsApp, Telefon oder E-Mail — direkt mit der Person. Ohne Aufschlag."],
+                  ["02", "Richtige Person finden", "Stundensatz, Skills und Bio sind transparent. Kein Rätselraten, kein Blindflug."],
+                  ["03", "Minijob-Vertrag abschließen", "Kontakt direkt per WhatsApp oder Telefon — Vertrag direkt zwischen Ihnen und der Fachkraft."],
                 ].map(([num, title, desc]) => (
                   <div key={num} className="flex gap-6 items-start">
                     <div className="text-3xl font-black text-gray-200 leading-none shrink-0 w-10">{num}</div>
@@ -409,30 +331,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── SECTION 8: LEGAL / VERTRAUEN ── */}
+      {/* ── 10. LEGAL ── */}
       <section className="py-20 px-8 bg-gray-950 text-white">
         <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-px bg-white/5">
           <div className="p-10">
             <p className="font-black text-yellow-500 mb-3 text-sm uppercase tracking-widest">Kostenlos</p>
             <p className="text-white/50 text-sm leading-relaxed font-medium">
-              MaxiJobber ist für Fachkräfte komplett kostenlos.
-              Für Unternehmen ebenfalls — kein Abo, keine Vermittlungsgebühr.
-              Transparenz von Anfang an.
+              MaxiJobber ist für Fachkräfte und Unternehmen komplett kostenlos.
+              Kein Abo, keine Provision. Transparenz von Anfang an.
             </p>
           </div>
           <div className="p-10">
             <p className="font-black text-yellow-500 mb-3 text-sm uppercase tracking-widest">Kein Arbeitgeber</p>
             <p className="text-white/50 text-sm leading-relaxed font-medium">
-              MaxiJobber ist eine Plattform, kein Arbeitgeber.
-              Unternehmen beauftragen Fachkräfte direkt — als Minijob oder Auftrag.
-              Ihr regelt das unter euch.
+              MaxiJobber ist Plattform, kein Arbeitgeber.
+              Minijob-Verträge werden direkt zwischen Fachkraft
+              und Unternehmen abgeschlossen. Ihr regelt das selbst.
             </p>
           </div>
           <div className="p-10">
             <p className="font-black text-yellow-500 mb-3 text-sm uppercase tracking-widest">Mustervertrag</p>
             <p className="text-white/50 text-sm leading-relaxed font-medium mb-4">
-              Für den ersten Einsatz empfehlen wir einen schriftlichen Auftrag.
-              Unser Minijob-Guide erklärt alles — mit Mustervertrag.
+              Unser Minijob-Guide erklärt alles — mit Mustervertrag
+              für den ersten Einsatz.
             </p>
             <a href="/legal/minijob-guide" className="text-xs font-black text-white/40 hover:text-yellow-500 transition uppercase tracking-widest underline underline-offset-4">
               Minijob-Guide →
@@ -441,19 +362,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Final CTA */}
+      {/* ── 11. FOOTER CTA ── */}
       <section className="py-28 px-8 bg-gray-950 text-white border-t border-white/5">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-end justify-between gap-12">
           <div>
             <h2 className="text-6xl md:text-7xl font-black tracking-tighter leading-none mb-4">
               QUALITÄT.<br />
               <span className="text-yellow-500">DIREKT.</span><br />
-              SOFORT.
+              FAIR.
             </h2>
             <p className="text-white/30 font-medium max-w-sm">
-              Kein Marktplatz für jeden. Nur das beste Handwerk — direkt vermittelt.
+              Kein Marktplatz für jeden. Geprüfte Fachkräfte für reguläre Minijobs — direkt vermittelt.
             </p>
-            <p className="text-yellow-400 font-black text-sm mt-2 uppercase tracking-widest">Kostenlos registrieren — dauert 5 Minuten.</p>
+            <p className="text-yellow-400 font-black text-sm mt-3 uppercase tracking-widest">
+              <span className="text-yellow-400">Kostenlos</span> registrieren — dauert 5 Minuten.
+            </p>
           </div>
           <div className="shrink-0 flex flex-col gap-3">
             <a href="/mitmachen" className="px-8 py-4 font-black bg-yellow-500 text-black rounded hover:bg-yellow-400 transition text-sm tracking-widest uppercase text-center">
@@ -462,7 +385,7 @@ export default function Home() {
             <a href="/profis" className="px-8 py-4 font-black border-2 border-white/30 rounded hover:border-white hover:bg-white/5 transition text-sm tracking-widest uppercase text-center">
               Fachkräfte durchsuchen
             </a>
-            <p className="text-white/20 text-xs text-center font-medium mt-1">Kostenlos · Kein Konto nötig</p>
+            <p className="text-white/20 text-xs text-center font-medium mt-1">Kostenlos · Kein Konto nötig · Direktkontakt</p>
           </div>
         </div>
       </section>
@@ -474,7 +397,8 @@ export default function Home() {
             <div>
               <a href="/" className="text-2xl font-black tracking-tighter">MAXI<span className="text-yellow-500">JOBBER</span></a>
               <p className="text-white/30 text-sm font-medium mt-2 max-w-xs leading-relaxed">
-                Handverlesene Fachkräfte. Direkte Vermittlung. Frankfurt & Rhein-Main.
+                Handverlesene Fachkräfte für reguläre Minijobs.<br />
+                Direkte Vermittlung. Frankfurt & Rhein-Main.
               </p>
             </div>
             <div className="flex gap-16">
