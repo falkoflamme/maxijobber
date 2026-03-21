@@ -28,11 +28,14 @@ export default function ProfileCard({ profile }: { profile: Profile }) {
     .toUpperCase()
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-100 hover:border-yellow-200 hover:shadow-md transition flex flex-col overflow-hidden group">
+    <div
+      className="bg-white border-2 border-[#1a1a1a] flex flex-col transition-all duration-200 hover:shadow-[6px_6px_0px_#F5C518] group"
+      style={{ boxShadow: '4px 4px 0px #1a1a1a' }}
+    >
       <Link href={`/profil/${profile.id}`} className="block p-6 flex-1">
         {/* Header */}
         <div className="flex items-start gap-4 mb-4">
-          <div className="w-14 h-14 rounded-xl overflow-hidden bg-gray-100 shrink-0 relative">
+          <div className="w-14 h-14 overflow-hidden bg-gray-100 shrink-0 relative border-2 border-[#1a1a1a]">
             {profile.photo_url ? (
               <Image
                 src={profile.photo_url}
@@ -77,12 +80,12 @@ export default function ProfileCard({ profile }: { profile: Profile }) {
         {(profile.skills?.length || 0) > 0 && (
           <div className="flex flex-wrap gap-1.5 mb-4">
             {profile.skills!.slice(0, 5).map(skill => (
-              <span key={skill} className="px-2.5 py-1 rounded-full bg-gray-50 border border-gray-100 text-xs font-semibold">
+              <span key={skill} className="px-2.5 py-1 bg-gray-50 border border-gray-200 text-xs font-semibold">
                 {skill}
               </span>
             ))}
             {profile.skills!.length > 5 && (
-              <span className="px-2.5 py-1 rounded-full bg-gray-50 border border-gray-100 text-xs font-semibold text-gray-400">
+              <span className="px-2.5 py-1 bg-gray-50 border border-gray-200 text-xs font-semibold text-gray-400">
                 +{profile.skills!.length - 5}
               </span>
             )}
@@ -100,14 +103,14 @@ export default function ProfileCard({ profile }: { profile: Profile }) {
       </Link>
 
       {/* Contact buttons */}
-      <div className="px-6 pb-5 flex gap-2">
+      <div className="px-6 pb-5 flex gap-2 border-t-2 border-[#1a1a1a] pt-4">
         {profile.whatsapp ? (
           <a
             href={`https://wa.me/${profile.whatsapp.replace(/\D/g, '')}`}
             target="_blank"
             rel="noopener noreferrer"
             onClick={e => e.stopPropagation()}
-            className="flex-1 py-2.5 font-black bg-green-500 text-white rounded-xl text-xs text-center hover:bg-green-600 transition"
+            className="flex-1 py-2.5 font-black bg-green-500 text-white text-xs text-center hover:bg-green-600 transition border-2 border-[#1a1a1a]"
           >
             WhatsApp
           </a>
@@ -115,7 +118,7 @@ export default function ProfileCard({ profile }: { profile: Profile }) {
           <a
             href={`tel:${profile.phone}`}
             onClick={e => e.stopPropagation()}
-            className="flex-1 py-2.5 font-black bg-gray-900 text-white rounded-xl text-xs text-center hover:bg-gray-700 transition"
+            className="flex-1 py-2.5 font-black bg-gray-900 text-white text-xs text-center hover:bg-gray-700 transition border-2 border-[#1a1a1a]"
           >
             Anrufen
           </a>
@@ -123,7 +126,7 @@ export default function ProfileCard({ profile }: { profile: Profile }) {
 
         <Link
           href={`/profil/${profile.id}`}
-          className="flex-1 py-2.5 font-black border-2 border-gray-200 rounded-xl text-xs text-center hover:border-gray-400 transition"
+          className="flex-1 py-2.5 font-black border-2 border-[#1a1a1a] text-xs text-center hover:bg-gray-900 hover:text-white transition"
         >
           Profil →
         </Link>

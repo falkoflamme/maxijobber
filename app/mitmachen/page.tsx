@@ -122,7 +122,7 @@ export default function Mitmachen() {
           <p className="text-gray-300 text-sm font-medium mb-8">Meistens innerhalb von 24 Stunden.</p>
           <a
             href="/profis"
-            className="inline-block px-6 py-3 font-black bg-gray-900 text-white rounded-full text-sm hover:bg-gray-700 transition"
+            className="inline-block px-6 py-3 font-black bg-gray-900 text-white text-sm hover:bg-gray-700 transition uppercase tracking-widest"
           >
             Andere Profile ansehen
           </a>
@@ -150,7 +150,7 @@ export default function Mitmachen() {
         <p className="text-gray-400 font-medium mb-3">
           Kein Konto nötig. Einfach ausfüllen, einreichen — wir schalten dich frei.
         </p>
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-50 border border-yellow-200 mb-8">
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-50 border-l-[3px] border-yellow-500 mb-8">
           <span className="w-1.5 h-1.5 rounded-full bg-yellow-500 shrink-0" />
           <span className="text-sm font-bold text-yellow-700">Bis zu 538&nbsp;€ steuerfrei im Monat dazuverdienen.</span>
         </div>
@@ -166,7 +166,7 @@ export default function Mitmachen() {
               <button
                 type="button"
                 onClick={() => fileRef.current?.click()}
-                className="w-20 h-20 rounded-2xl border-2 border-dashed border-gray-200 hover:border-gray-400 transition overflow-hidden shrink-0 flex items-center justify-center"
+                className="w-20 h-20 border-2 border-dashed border-gray-300 hover:border-gray-900 transition overflow-hidden shrink-0 flex items-center justify-center"
               >
                 {photoPreview ? (
                   <Image src={photoPreview} alt="Vorschau" width={80} height={80} className="object-cover w-full h-full" />
@@ -192,7 +192,7 @@ export default function Mitmachen() {
                 value={form.full_name}
                 onChange={e => set('full_name', e.target.value)}
                 placeholder="Max Mustermann"
-                className="w-full px-4 py-3.5 border border-gray-200 rounded-xl text-sm font-medium focus:outline-none focus:border-gray-900 transition"
+                className="w-full px-4 py-3.5 border-2 border-gray-200 text-sm font-medium focus:outline-none focus:border-gray-900 transition"
               />
             </div>
             <div>
@@ -203,7 +203,7 @@ export default function Mitmachen() {
                 value={form.city}
                 onChange={e => set('city', e.target.value)}
                 placeholder="Frankfurt"
-                className="w-full px-4 py-3.5 border border-gray-200 rounded-xl text-sm font-medium focus:outline-none focus:border-gray-900 transition"
+                className="w-full px-4 py-3.5 border-2 border-gray-200 text-sm font-medium focus:outline-none focus:border-gray-900 transition"
               />
             </div>
           </div>
@@ -217,10 +217,10 @@ export default function Mitmachen() {
                   key={role}
                   type="button"
                   onClick={() => set('role', role)}
-                  className={`px-4 py-2 rounded-full text-sm font-bold border-2 transition ${
+                  className={`px-4 py-2 text-sm font-bold border-2 transition ${
                     form.role === role
                       ? 'border-gray-900 bg-gray-900 text-white'
-                      : 'border-gray-200 hover:border-gray-400'
+                      : 'border-gray-200 hover:border-gray-900'
                   }`}
                 >
                   {role}
@@ -233,7 +233,7 @@ export default function Mitmachen() {
                 value={form.role && !ROLES.includes(form.role) ? form.role : ''}
                 onChange={e => set('role', e.target.value)}
                 placeholder="Andere Rolle eingeben..."
-                className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm font-medium focus:outline-none focus:border-gray-900 transition"
+                className="w-full px-4 py-3 border-2 border-gray-200 text-sm font-medium focus:outline-none focus:border-gray-900 transition"
               />
             </div>
           </div>
@@ -270,10 +270,10 @@ export default function Mitmachen() {
                     type="button"
                     onClick={() => addSkill(s)}
                     disabled={form.skills.includes(s)}
-                    className={`px-3 py-1.5 rounded-full text-xs font-bold border transition ${
+                    className={`px-3 py-1.5 text-xs font-bold border-2 transition ${
                       form.skills.includes(s)
-                        ? 'border-yellow-400 bg-yellow-50 text-yellow-700'
-                        : 'border-gray-200 hover:border-yellow-300 hover:bg-yellow-50'
+                        ? 'border-yellow-500 bg-yellow-50 text-yellow-700'
+                        : 'border-gray-200 hover:border-yellow-500 hover:bg-yellow-50'
                     }`}
                   >
                     {s}
@@ -289,12 +289,12 @@ export default function Mitmachen() {
                 onChange={e => setForm(prev => ({ ...prev, skillInput: e.target.value }))}
                 onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); addSkill(form.skillInput) } }}
                 placeholder="Skill eingeben + Enter"
-                className="flex-1 px-4 py-3 border border-gray-200 rounded-xl text-sm font-medium focus:outline-none focus:border-gray-900 transition"
+                className="flex-1 px-4 py-3 border-2 border-gray-200 text-sm font-medium focus:outline-none focus:border-gray-900 transition"
               />
               <button
                 type="button"
                 onClick={() => addSkill(form.skillInput)}
-                className="px-4 py-3 font-black bg-gray-100 rounded-xl text-sm hover:bg-gray-200 transition"
+                className="px-4 py-3 font-black bg-gray-100 border-2 border-gray-200 text-sm hover:bg-gray-200 hover:border-gray-900 transition"
               >
                 +
               </button>
@@ -303,7 +303,7 @@ export default function Mitmachen() {
             {form.skills.length > 0 && (
               <div className="flex flex-wrap gap-2">
                 {form.skills.map(skill => (
-                  <span key={skill} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gray-900 text-white text-xs font-bold">
+                  <span key={skill} className="flex items-center gap-1.5 px-3 py-1.5 bg-gray-900 text-white text-xs font-bold border-2 border-[#1a1a1a]">
                     {skill}
                     <button type="button" onClick={() => removeSkill(skill)} className="hover:text-gray-300 transition font-black">×</button>
                   </span>
@@ -325,7 +325,7 @@ export default function Mitmachen() {
                 max={300}
                 value={form.hourly_rate}
                 onChange={e => set('hourly_rate', e.target.value)}
-                className="w-full px-4 py-3.5 border border-gray-200 rounded-xl text-sm font-medium focus:outline-none focus:border-gray-900 transition pr-12"
+                className="w-full px-4 py-3.5 border-2 border-gray-200 text-sm font-medium focus:outline-none focus:border-gray-900 transition pr-12"
               />
               <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 font-bold text-sm">€/h</span>
             </div>
@@ -343,21 +343,21 @@ export default function Mitmachen() {
                 value={form.whatsapp}
                 onChange={e => set('whatsapp', e.target.value)}
                 placeholder="WhatsApp +49 170 1234567"
-                className="w-full px-4 py-3.5 border border-gray-200 rounded-xl text-sm font-medium focus:outline-none focus:border-gray-900 transition"
+                className="w-full px-4 py-3.5 border-2 border-gray-200 text-sm font-medium focus:outline-none focus:border-gray-900 transition"
               />
               <input
                 type="tel"
                 value={form.phone}
                 onChange={e => set('phone', e.target.value)}
                 placeholder="Telefon +49 170 1234567"
-                className="w-full px-4 py-3.5 border border-gray-200 rounded-xl text-sm font-medium focus:outline-none focus:border-gray-900 transition"
+                className="w-full px-4 py-3.5 border-2 border-gray-200 text-sm font-medium focus:outline-none focus:border-gray-900 transition"
               />
               <input
                 type="email"
                 value={form.email}
                 onChange={e => set('email', e.target.value)}
                 placeholder="E-Mail (optional)"
-                className="w-full px-4 py-3.5 border border-gray-200 rounded-xl text-sm font-medium focus:outline-none focus:border-gray-900 transition"
+                className="w-full px-4 py-3.5 border-2 border-gray-200 text-sm font-medium focus:outline-none focus:border-gray-900 transition"
               />
             </div>
             <p className="text-xs text-gray-400 mt-2 font-medium">
@@ -366,7 +366,7 @@ export default function Mitmachen() {
           </div>
 
           {error && (
-            <div className="p-4 bg-red-50 border border-red-100 rounded-xl">
+            <div className="p-4 bg-red-50 border-l-[3px] border-red-500">
               <p className="text-red-600 text-sm font-semibold">{error}</p>
             </div>
           )}
@@ -374,7 +374,7 @@ export default function Mitmachen() {
           <button
             type="submit"
             disabled={loading || !form.full_name || !form.role || !form.bio || !form.hourly_rate}
-            className="w-full py-4 font-black bg-gray-900 text-white rounded-full hover:bg-gray-700 transition text-sm tracking-wide disabled:opacity-40"
+            className="w-full py-4 font-black bg-gray-900 text-white hover:bg-gray-700 transition text-sm tracking-widest uppercase disabled:opacity-40"
           >
             {loading ? 'Wird eingereicht...' : 'Profil einreichen →'}
           </button>

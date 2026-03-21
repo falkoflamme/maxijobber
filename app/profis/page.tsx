@@ -44,45 +44,48 @@ export default async function ProfisPage({
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#F5F4F0]">
+      {/* Power stripe */}
+      <div className="h-[3px] bg-yellow-500 w-full" />
+
       {/* Nav */}
-      <div className="bg-white border-b border-gray-100 sticky top-0 z-10">
+      <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <a href="/" className="text-xl font-black tracking-tighter">
             MAXI<span className="text-yellow-500">JOBBER</span>
           </a>
           <a
             href="/mitmachen"
-            className="px-5 py-2.5 font-black bg-gray-900 text-white rounded-full text-sm hover:bg-gray-700 transition"
+            className="px-5 py-2.5 font-black bg-gray-900 text-white text-sm hover:bg-gray-700 transition uppercase tracking-widest"
           >
             Mitmachen
           </a>
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-6 py-8">
+      <div className="max-w-6xl mx-auto px-6 py-10">
         {/* Header */}
         <div className="mb-8">
           <p className="text-xs font-black uppercase tracking-[0.3em] text-yellow-500 mb-2">Frankfurt & Umgebung</p>
-          <h1 className="text-4xl font-black tracking-tighter">
-            {profiles?.length || 0} {onlyAvailable ? 'verfügbare' : ''} Fachkräfte.
+          <h1 className="text-5xl font-black tracking-tighter">
+            {profiles?.length || 0} {onlyAvailable ? 'verfügbare' : 'geprüfte'} Fachkräfte.
           </h1>
         </div>
 
         {/* Filter bar */}
-        <div className="bg-white rounded-2xl border border-gray-100 p-5 mb-8 space-y-4">
+        <div className="bg-white border-2 border-[#1a1a1a] p-6 mb-8 space-y-5" style={{ boxShadow: '4px 4px 0px #1a1a1a' }}>
           {/* Rollen */}
           <div>
-            <p className="text-xs font-black uppercase tracking-widest text-gray-400 mb-2.5">Rolle</p>
+            <p className="text-xs font-black uppercase tracking-widest text-gray-400 mb-3">Rolle</p>
             <div className="flex flex-wrap gap-2">
               {ROLES.map(r => (
                 <a
                   key={r}
                   href={filterLink({ rolle: r })}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-bold border-2 transition ${
+                  className={`px-3.5 py-1.5 text-xs font-bold border-2 transition ${
                     activeRolle === r
                       ? 'border-gray-900 bg-gray-900 text-white'
-                      : 'border-gray-200 hover:border-gray-400'
+                      : 'border-gray-300 hover:border-gray-900'
                   }`}
                 >
                   {r}
@@ -91,7 +94,7 @@ export default async function ProfisPage({
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-6 items-center">
+          <div className="flex flex-wrap gap-6 items-center border-t border-gray-200 pt-5">
             {/* Stadt */}
             <div>
               <p className="text-xs font-black uppercase tracking-widest text-gray-400 mb-2">Stadt</p>
@@ -100,10 +103,10 @@ export default async function ProfisPage({
                   <a
                     key={c}
                     href={filterLink({ city: c })}
-                    className={`px-3.5 py-1.5 rounded-full text-xs font-bold border-2 transition ${
+                    className={`px-3.5 py-1.5 text-xs font-bold border-2 transition ${
                       activeCity === c
                         ? 'border-gray-900 bg-gray-900 text-white'
-                        : 'border-gray-200 hover:border-gray-400'
+                        : 'border-gray-300 hover:border-gray-900'
                     }`}
                   >
                     {c}
@@ -116,10 +119,10 @@ export default async function ProfisPage({
             <div className="ml-auto">
               <a
                 href={filterLink({ verfuegbar: onlyAvailable ? '0' : '1' })}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold border-2 transition ${
+                className={`flex items-center gap-2 px-4 py-2 text-sm font-bold border-2 transition ${
                   onlyAvailable
-                    ? 'border-green-500 bg-green-50 text-green-700'
-                    : 'border-gray-200 hover:border-gray-400'
+                    ? 'border-green-600 bg-green-50 text-green-700'
+                    : 'border-gray-300 hover:border-gray-900'
                 }`}
               >
                 <span className={`w-2 h-2 rounded-full ${onlyAvailable ? 'bg-green-500' : 'bg-gray-300'}`} />
@@ -131,12 +134,12 @@ export default async function ProfisPage({
 
         {/* Grid */}
         {!profiles?.length ? (
-          <div className="bg-white rounded-2xl border border-gray-100 p-14 text-center">
+          <div className="bg-white border-2 border-[#1a1a1a] p-14 text-center" style={{ boxShadow: '4px 4px 0px #1a1a1a' }}>
             <div className="text-3xl font-black text-gray-200 mb-3">Keine Treffer</div>
             <p className="text-gray-400 font-medium mb-6">Versuche andere Filter oder melde dich selbst an.</p>
             <a
               href="/mitmachen"
-              className="inline-block px-6 py-3 font-black bg-gray-900 text-white rounded-full text-sm hover:bg-gray-700 transition"
+              className="inline-block px-6 py-3 font-black bg-gray-900 text-white text-sm hover:bg-gray-700 transition uppercase tracking-widest"
             >
               Jetzt mitmachen →
             </a>
@@ -150,12 +153,12 @@ export default async function ProfisPage({
         )}
 
         {/* CTA */}
-        <div className="mt-14 bg-gray-900 rounded-3xl p-8 text-white text-center">
+        <div className="mt-14 bg-gray-900 p-10 text-white text-center">
           <h2 className="text-3xl font-black tracking-tighter mb-3">Du bist Fachkraft?</h2>
           <p className="text-white/40 font-medium mb-6">Stell dich vor — kostenlos, in 5 Minuten.</p>
           <a
             href="/mitmachen"
-            className="inline-block px-8 py-4 font-black bg-yellow-500 text-black rounded-full hover:bg-yellow-400 transition text-sm"
+            className="inline-block px-8 py-4 font-black bg-yellow-500 text-black hover:bg-yellow-400 transition text-sm uppercase tracking-widest"
           >
             Profil einreichen →
           </a>
