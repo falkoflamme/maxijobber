@@ -8,7 +8,7 @@ export default function MockupC() {
             MaxiJobber
           </span>
           <div className="hidden md:flex items-center gap-6 text-sm font-medium text-gray-500">
-            <a href="#wie" className="hover:text-purple-600 transition">Wie's läuft</a>
+            <a href="#wie" className="hover:text-purple-600 transition">Wie&apos;s läuft</a>
             <a href="#fachkraefte" className="hover:text-purple-600 transition">Fachkräfte</a>
             <a href="#unternehmen" className="hover:text-purple-600 transition">Unternehmen</a>
           </div>
@@ -87,7 +87,7 @@ export default function MockupC() {
             <span className="inline-block px-4 py-1.5 rounded-full bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700 font-bold text-sm mb-4">
               Einfach. Direkt. Fair.
             </span>
-            <h2 className="text-4xl md:text-5xl font-black">So läuft's ab</h2>
+            <h2 className="text-4xl md:text-5xl font-black">So läuft&apos;s ab</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
@@ -142,7 +142,7 @@ export default function MockupC() {
               <h2 className="text-4xl md:text-5xl font-black mb-5">
                 Du bist gut.<br />
                 <span className="bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">
-                  Zeig's der Welt.
+                  Zeig&apos;s der Welt.
                 </span>
               </h2>
               <p className="text-gray-500 mb-8 leading-relaxed">
@@ -267,7 +267,7 @@ export default function MockupC() {
           ].map(({ quote, name, role }) => (
             <div key={name} className="p-6 rounded-3xl bg-gray-50 border border-gray-100 hover:border-purple-100 hover:shadow-md transition">
               <div className="text-yellow-500 text-sm mb-4">⭐⭐⭐⭐⭐</div>
-              <p className="text-gray-700 text-sm leading-relaxed mb-5 font-medium">"{quote}"</p>
+              <p className="text-gray-700 text-sm leading-relaxed mb-5 font-medium">&ldquo;{quote}&rdquo;</p>
               <div>
                 <div className="font-black text-sm">{name}</div>
                 <div className="text-gray-400 text-xs mt-0.5">{role}</div>

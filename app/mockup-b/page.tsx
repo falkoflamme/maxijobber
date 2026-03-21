@@ -9,7 +9,7 @@ export default function MockupB() {
               Maxi<span className="text-gray-900">Jobber</span>
             </span>
             <div className="hidden md:flex items-center gap-6 text-sm text-gray-500 font-medium">
-              <a href="#wie" className="hover:text-gray-900 transition">So funktioniert's</a>
+              <a href="#wie" className="hover:text-gray-900 transition">So funktioniert&apos;s</a>
               <a href="#fachkraefte" className="hover:text-gray-900 transition">Fachkräfte</a>
               <a href="#unternehmen" className="hover:text-gray-900 transition">Unternehmen</a>
               <a href="#preise" className="hover:text-gray-900 transition">Preise</a>
