@@ -1,5 +1,17 @@
+import type { Metadata } from 'next'
 import { createClient } from '@/lib/supabase/server'
 import ProfileCard from '@/components/ProfileCard'
+
+export const metadata: Metadata = {
+  title: 'Fachkräfte für Minijobs in Frankfurt — MaxiJobber',
+  description: 'Geprüfte Elektriker, Köche, Handwerker und mehr für reguläre Minijob-Einsätze in Frankfurt & Rhein-Main. Direktkontakt, kein Aufschlag.',
+  alternates: { canonical: 'https://www.maxijobber.de/profis' },
+  openGraph: {
+    title: 'Geprüfte Fachkräfte für Minijobs — Frankfurt',
+    description: 'Fachkräfte direkt kontaktieren. Kein Mittelsmann. Alle Profile handverlesen geprüft.',
+    url: 'https://www.maxijobber.de/profis',
+  },
+}
 
 const CITIES = ['Alle', 'Frankfurt', 'Offenbach', 'Wiesbaden', 'Darmstadt', 'Mainz']
 const ROLES = [

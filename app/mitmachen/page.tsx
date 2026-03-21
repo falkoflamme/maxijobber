@@ -3,6 +3,8 @@
 import { useState, useRef } from 'react'
 import Image from 'next/image'
 
+// Note: metadata must be in a Server Component — see app/mitmachen/layout.tsx
+
 const ROLES = [
   'Sous Chef', 'Chef de Partie', 'Head Waiter', 'Elektriker', 'Klempner',
   'Maler', 'Schreiner', 'Trockenbauer', 'Fliesenleger', 'Koch', 'Servicekraft',
