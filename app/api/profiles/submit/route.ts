@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createServiceClient } from '@/lib/supabase/server'
+import { Resend } from 'resend'
 
 export async function POST(request: NextRequest) {
   try {
@@ -94,6 +95,39 @@ export async function POST(request: NextRequest) {
     if (error) {
       console.error('Profile insert error:', error)
       return NextResponse.json({ error: 'Einreichung fehlgeschlagen' }, { status: 500 })
+    }
+
+    // Notify admin
+    if (process.env.RESEND_API_KEY) {
+      try {
+        const resend = new Resend(process.env.RESEND_API_KEY)
+        const adminEmails = (process.env.ADMIN_EMAILS || 'flamme.falko@gmail.com').split(',')
+        await resend.emails.send({
+          from: 'MaxiJobber <noreply@maxijobber.de>',
+          to: adminEmails,
+          subject: `Neues Profil: ${full_name} (${role})`,
+          html: `
+            <h2 style="font-family:sans-serif">Neues Profil eingereicht</h2>
+            <table style="font-family:sans-serif;font-size:14px;border-collapse:collapse">
+              <tr><td style="padding:4px 12px 4px 0;color:#666">Name</td><td style="padding:4px 0"><strong>${full_name}</strong></td></tr>
+              <tr><td style="padding:4px 12px 4px 0;color:#666">Rolle</td><td style="padding:4px 0">${role}</td></tr>
+              <tr><td style="padding:4px 12px 4px 0;color:#666">Stadt</td><td style="padding:4px 0">${city}</td></tr>
+              <tr><td style="padding:4px 12px 4px 0;color:#666">Stundensatz</td><td style="padding:4px 0">${hourly_rate} €/h</td></tr>
+              ${whatsapp ? `<tr><td style="padding:4px 12px 4px 0;color:#666">WhatsApp</td><td style="padding:4px 0">${whatsapp}</td></tr>` : ''}
+              ${phone ? `<tr><td style="padding:4px 12px 4px 0;color:#666">Telefon</td><td style="padding:4px 0">${phone}</td></tr>` : ''}
+              ${email ? `<tr><td style="padding:4px 12px 4px 0;color:#666">E-Mail</td><td style="padding:4px 0">${email}</td></tr>` : ''}
+            </table>
+            ${bio ? `<p style="font-family:sans-serif;font-size:14px;color:#444;margin-top:16px">${improvedBio}</p>` : ''}
+            <p style="margin-top:24px">
+              <a href="https://www.maxijobber.de/admin" style="background:#1a1a1a;color:#fff;padding:12px 24px;text-decoration:none;font-family:sans-serif;font-weight:bold;font-size:14px">
+                Im Admin freischalten →
+              </a>
+            </p>
+          `,
+        })
+      } catch {
+        // Non-critical — don't fail the request if email fails
+      }
     }
 
     return NextResponse.json({ success: true, id: data.id })
