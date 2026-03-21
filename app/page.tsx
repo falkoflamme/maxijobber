@@ -1,3 +1,5 @@
+import TestimonialSlider from '@/components/TestimonialSlider'
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans overflow-x-hidden">
@@ -18,7 +20,7 @@ export default function Home() {
           </div>
           <div className="flex items-center gap-4">
             <a href="/profis" className="text-sm font-semibold text-gray-400 hover:text-gray-900 transition">Profis ansehen</a>
-            <a href="/mitmachen" className="px-5 py-2.5 text-sm font-black bg-gray-900 text-white rounded hover:bg-gray-700 transition uppercase tracking-widest">
+            <a href="/mitmachen" className="px-5 py-2.5 text-sm font-black bg-yellow-500 text-black rounded hover:bg-yellow-400 transition uppercase tracking-widest">
               Mitmachen
             </a>
           </div>
@@ -66,13 +68,21 @@ export default function Home() {
               ["24h", "Bis zur Freischaltung"],
             ].map(([n, l]) => (
               <div key={l} className="border-l-[3px] border-yellow-500 pl-5">
-                <div className="text-4xl font-black text-gray-900">{n}</div>
+                <div className="text-4xl font-black text-yellow-500">{n}</div>
                 <div className="text-sm text-gray-400 font-medium mt-1">{l}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* ── KOSTENLOS-LEISTE ── */}
+      <div className="bg-[#1a1a1a] py-5 px-8 text-center">
+        <p className="font-black text-yellow-400 text-sm md:text-base uppercase tracking-widest">
+          MAXIJOBBER IST 100% KOSTENLOS — FÜR FACHKRÄFTE UND UNTERNEHMEN.
+        </p>
+        <p className="text-white/40 text-xs font-medium mt-1">Kein Abo. Keine Provision. Keine versteckten Kosten. Nie.</p>
+      </div>
 
       {/* ── SECTION 2: WAS DIE PLATTFORM MACHT ── */}
       <section className="py-16 px-8 bg-gray-900 text-white">
@@ -105,7 +115,7 @@ export default function Home() {
               { name: "Thomas Braun", job: "Maler & Lackierer", years: "12 Jahre", city: "Bornheim", rate: "34 €/h", quote: "Details machen den Unterschied. Das weiß ich nach 12 Jahren." },
               { name: "Ayse Demir", job: "Trockenbauerin", years: "6 Jahre", city: "Nordend", rate: "36 €/h", quote: "Ich baue Wände die wirklich gerade sind. Klingt simpel — ist es nicht." },
             ].map(({ name, job, years, city, rate, quote }) => (
-              <div key={name} className="border-2 border-[#1a1a1a] border-t-[4px] border-t-yellow-500 p-6 shadow-md hover:shadow-xl transition-shadow">
+              <div key={name} className="bg-white border-2 border-black/10 border-t-4 border-t-yellow-400 p-6 shadow-[0_2px_12px_rgba(0,0,0,0.08)] hover:border-[#1a1a1a] hover:shadow-md transition-all">
                 <div className="w-12 h-12 bg-gray-900 flex items-center justify-center text-white font-black text-xl mb-4">
                   {name[0]}
                 </div>
@@ -126,6 +136,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ── TESTIMONIAL SLIDER ── */}
+      <TestimonialSlider />
 
       {/* ── SECTION 4: REALITY CHECK ── */}
       <section className="py-28 px-8 bg-[#F5F4F0] border-t border-gray-300">
@@ -175,6 +188,52 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── WIN-WIN-WIN SECTION ── */}
+      <section className="py-20 px-8 bg-[#1a1a1a] text-white">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-px bg-white/10">
+          <div className="p-10 bg-[#1a1a1a]">
+            <div className="text-3xl font-black text-yellow-400 mb-4">↑</div>
+            <h3 className="font-black text-xl mb-2">Mehr Geld. Deine Bedingungen.</h3>
+            <p className="text-xs font-black uppercase tracking-widest text-white/30 mb-4">Für Fachkräfte</p>
+            <div className="space-y-2">
+              {["Bis 538€ steuerfrei im Monat", "Kein Chef der deinen Preis bestimmt", "Wann du willst, wie du willst"].map(i => (
+                <div key={i} className="flex gap-2 items-start">
+                  <div className="w-[2px] h-4 bg-yellow-400 shrink-0 mt-1" />
+                  <span className="text-white/60 text-sm font-medium">{i}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="p-10 bg-[#1a1a1a]">
+            <div className="text-3xl font-black text-yellow-400 mb-4">⚡</div>
+            <h3 className="font-black text-xl mb-2">Sofort. Ohne Risiko.</h3>
+            <p className="text-xs font-black uppercase tracking-widest text-white/30 mb-4">Für Unternehmen</p>
+            <div className="space-y-2">
+              {["Geprüfte Profis — kein Blindflug", "Direktkontakt ohne Aufschlag", "Oft in 24h besetzt"].map(i => (
+                <div key={i} className="flex gap-2 items-start">
+                  <div className="w-[2px] h-4 bg-yellow-400 shrink-0 mt-1" />
+                  <span className="text-white/60 text-sm font-medium">{i}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="p-10 bg-[#1a1a1a]">
+            <div className="text-3xl font-black text-yellow-400 mb-4">∞</div>
+            <h3 className="font-black text-xl mb-2">Qualität trifft Nachfrage.</h3>
+            <p className="text-xs font-black uppercase tracking-widest text-white/30 mb-4">Warum es funktioniert</p>
+            <div className="space-y-2">
+              {["Echter Markt — keine Vermittler", "Faire Preise — beide gewinnen", "Vertrauen durch Transparenz"].map(i => (
+                <div key={i} className="flex gap-2 items-start">
+                  <div className="w-[2px] h-4 bg-yellow-400 shrink-0 mt-1" />
+                  <span className="text-white/60 text-sm font-medium">{i}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <p className="text-center text-white/20 text-xs font-black uppercase tracking-widest mt-8">Das ist fair. Für alle.</p>
+      </section>
+
       {/* ── SECTION 5: FÜR FACHKRÄFTE ── */}
       <section id="fachkraefte" className="py-28 px-8 bg-white border-t border-gray-200">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
@@ -215,7 +274,7 @@ export default function Home() {
               { name: "Thomas Braun", job: "Maler & Lackierer", years: "12 Jahre", loc: "Bornheim", rate: "34 €/h", avail: false },
               { name: "Ayse Demir", job: "Trockenbauerin", years: "6 Jahre", loc: "Nordend", rate: "36 €/h", avail: true },
             ].map(({ name, job, years, loc, rate, avail }) => (
-              <div key={name} className="flex items-center gap-5 p-5 border-2 border-[#1a1a1a] shadow-sm hover:shadow-md transition-shadow">
+              <div key={name} className="flex items-center gap-5 p-5 bg-white border-2 border-black/10 shadow-[0_2px_8px_rgba(0,0,0,0.06)] hover:border-[#1a1a1a] hover:shadow-md transition-all">
                 <div className="w-11 h-11 bg-gray-900 flex items-center justify-center text-white font-black text-base shrink-0">
                   {name[0]}
                 </div>
@@ -394,6 +453,7 @@ export default function Home() {
             <p className="text-white/30 font-medium max-w-sm">
               Kein Marktplatz für jeden. Nur das beste Handwerk — direkt vermittelt.
             </p>
+            <p className="text-yellow-400 font-black text-sm mt-2 uppercase tracking-widest">Kostenlos registrieren — dauert 5 Minuten.</p>
           </div>
           <div className="shrink-0 flex flex-col gap-3">
             <a href="/mitmachen" className="px-8 py-4 font-black bg-yellow-500 text-black rounded hover:bg-yellow-400 transition text-sm tracking-widest uppercase text-center">
