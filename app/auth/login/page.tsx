@@ -60,7 +60,7 @@ export default function LoginPage() {
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                   placeholder="deine@email.de"
-                  className="w-full px-4 py-3.5 border border-gray-200 rounded-xl text-sm font-medium focus:outline-none focus:border-gray-900 transition"
+                  className="w-full px-4 py-3.5 border-2 border-gray-200 text-sm font-medium focus:outline-none focus:border-gray-900 transition"
                 />
               </div>
 
@@ -69,17 +69,14 @@ export default function LoginPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-4 font-black bg-gray-900 text-white rounded-full hover:bg-gray-700 transition text-sm tracking-wide disabled:opacity-50"
+                className="w-full py-4 font-black bg-gray-900 text-white hover:bg-gray-700 transition text-sm tracking-widest uppercase disabled:opacity-50"
               >
                 {loading ? 'Sende Link...' : 'Magic Link senden'}
               </button>
             </form>
 
-            <p className="mt-6 text-sm text-gray-400 text-center">
-              Noch kein Konto?{' '}
-              <a href="/auth/register" className="font-black text-gray-900 underline underline-offset-2">
-                Registrieren
-              </a>
+            <p className="mt-6 text-xs text-gray-400 text-center font-medium">
+              Nur für Admins. Kein öffentlicher Zugang.
             </p>
           </>
         )}
