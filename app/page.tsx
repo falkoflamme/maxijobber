@@ -105,7 +105,7 @@ export default function Home() {
               { name: "Thomas Braun", job: "Maler & Lackierer", years: "12 Jahre", city: "Bornheim", rate: "34 €/h", quote: "Details machen den Unterschied. Das weiß ich nach 12 Jahren." },
               { name: "Ayse Demir", job: "Trockenbauerin", years: "6 Jahre", city: "Nordend", rate: "36 €/h", quote: "Ich baue Wände die wirklich gerade sind. Klingt simpel — ist es nicht." },
             ].map(({ name, job, years, city, rate, quote }) => (
-              <div key={name} className="border border-gray-200 hover:border-gray-900 transition border-t-[3px] border-t-yellow-500 p-6">
+              <div key={name} className="border-2 border-[#1a1a1a] border-t-[4px] border-t-yellow-500 p-6 shadow-md hover:shadow-xl transition-shadow">
                 <div className="w-12 h-12 bg-gray-900 flex items-center justify-center text-white font-black text-xl mb-4">
                   {name[0]}
                 </div>
@@ -215,7 +215,7 @@ export default function Home() {
               { name: "Thomas Braun", job: "Maler & Lackierer", years: "12 Jahre", loc: "Bornheim", rate: "34 €/h", avail: false },
               { name: "Ayse Demir", job: "Trockenbauerin", years: "6 Jahre", loc: "Nordend", rate: "36 €/h", avail: true },
             ].map(({ name, job, years, loc, rate, avail }) => (
-              <div key={name} className="flex items-center gap-5 p-5 border border-gray-200 hover:border-gray-900 transition">
+              <div key={name} className="flex items-center gap-5 p-5 border-2 border-[#1a1a1a] shadow-sm hover:shadow-md transition-shadow">
                 <div className="w-11 h-11 bg-gray-900 flex items-center justify-center text-white font-black text-base shrink-0">
                   {name[0]}
                 </div>
