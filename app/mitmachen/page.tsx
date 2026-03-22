@@ -118,8 +118,8 @@ function Chip({ label, active, onClick }: { label: string; active: boolean; onCl
     <button
       type="button"
       onClick={onClick}
-      className={`px-3.5 py-2 text-xs font-bold border-2 transition ${
-        active ? 'border-gray-900 bg-gray-900 text-white' : 'border-gray-200 hover:border-gray-900'
+      className={`px-4 py-2.5 text-sm font-bold border-2 transition ${
+        active ? 'border-gray-900 bg-gray-900 text-white' : 'border-gray-500 text-gray-800 hover:border-gray-900 hover:bg-gray-50'
       }`}
     >
       {label}
@@ -132,8 +132,8 @@ function YellowChip({ label, active, onClick }: { label: string; active: boolean
     <button
       type="button"
       onClick={onClick}
-      className={`px-3.5 py-2 text-xs font-bold border-2 transition ${
-        active ? 'border-yellow-500 bg-yellow-50 text-yellow-800' : 'border-gray-200 hover:border-yellow-500 hover:bg-yellow-50'
+      className={`px-4 py-2.5 text-sm font-bold border-2 transition ${
+        active ? 'border-yellow-500 bg-yellow-400 text-gray-900' : 'border-gray-500 text-gray-800 hover:border-yellow-500 hover:bg-yellow-50'
       }`}
     >
       {label}
@@ -144,8 +144,8 @@ function YellowChip({ label, active, onClick }: { label: string; active: boolean
 function Label({ children, sub }: { children: React.ReactNode; sub?: string }) {
   return (
     <div className="mb-3">
-      <p className="text-xs font-black uppercase tracking-widest text-gray-400">{children}</p>
-      {sub && <p className="text-xs text-gray-400 font-medium mt-1">{sub}</p>}
+      <p className="text-xs font-black uppercase tracking-widest text-gray-700">{children}</p>
+      {sub && <p className="text-xs text-gray-600 font-medium mt-1">{sub}</p>}
     </div>
   )
 }
@@ -154,7 +154,7 @@ function Input({ ...props }: React.InputHTMLAttributes<HTMLInputElement>) {
   return (
     <input
       {...props}
-      className={`w-full px-4 py-3.5 border-2 border-gray-200 text-sm font-medium focus:outline-none focus:border-gray-900 transition ${props.className ?? ''}`}
+      className={`w-full px-4 py-3.5 border-2 border-gray-400 text-sm font-medium focus:outline-none focus:border-gray-900 transition ${props.className ?? ''}`}
     />
   )
 }
@@ -163,7 +163,7 @@ function Textarea({ ...props }: React.TextareaHTMLAttributes<HTMLTextAreaElement
   return (
     <textarea
       {...props}
-      className={`w-full px-4 py-3.5 border-2 border-gray-200 text-sm font-medium focus:outline-none focus:border-gray-900 transition resize-none ${props.className ?? ''}`}
+      className={`w-full px-4 py-3.5 border-2 border-gray-400 text-sm font-medium focus:outline-none focus:border-gray-900 transition resize-none ${props.className ?? ''}`}
     />
   )
 }
@@ -225,7 +225,7 @@ function PhotoCropModal({ src, onDone, onCancel }: {
       <div className="bg-white border-2 border-[#1a1a1a] w-full max-w-sm" style={{ boxShadow: '6px 6px 0px #F5C518' }}>
         <div className="px-6 py-4 border-b-2 border-[#1a1a1a]">
           <p className="text-xs font-black uppercase tracking-widest text-gray-900">Foto zuschneiden</p>
-          <p className="text-xs text-gray-400 font-medium mt-1">Verschiebe und zoome — der Rahmen ist der Ausschnitt.</p>
+          <p className="text-xs text-gray-600 font-medium mt-1">Verschiebe und zoome — der Rahmen ist der Ausschnitt.</p>
         </div>
         <div className="relative h-72 bg-gray-900">
           <Cropper
@@ -308,8 +308,8 @@ function DragDropPhoto({ preview, onFile }: { preview: string | null; onFile: (f
         <div className="text-center px-4">
           <div className="text-3xl text-gray-300 mb-2 font-black">↑</div>
           <p className="text-sm font-bold text-gray-500">Foto hier hineinziehen oder anklicken</p>
-          <p className="text-xs text-gray-400 font-medium mt-1">JPG, PNG · max. 5 MB · optional</p>
-          <p className="text-xs text-gray-400 font-medium mt-1">Ein professionelles Foto schafft Vertrauen.</p>
+          <p className="text-xs text-gray-600 font-medium mt-1">JPG, PNG · max. 5 MB · optional</p>
+          <p className="text-xs text-gray-600 font-medium mt-1">Ein professionelles Foto schafft Vertrauen.</p>
         </div>
       )}
       <input
@@ -495,7 +495,7 @@ export default function Mitmachen() {
                 <Label sub="Nur intern sichtbar — nicht öffentlich.">Dein Name *</Label>
                 <div className="grid grid-cols-2 gap-4 mb-4">
                   <div>
-                    <p className="text-xs text-gray-400 font-semibold mb-1.5">Vorname</p>
+                    <p className="text-xs text-gray-700 font-semibold mb-1.5">Vorname</p>
                     <Input
                       value={form.vorname}
                       onChange={e => {
@@ -507,7 +507,7 @@ export default function Mitmachen() {
                     />
                   </div>
                   <div>
-                    <p className="text-xs text-gray-400 font-semibold mb-1.5">Nachname</p>
+                    <p className="text-xs text-gray-700 font-semibold mb-1.5">Nachname</p>
                     <Input
                       value={form.nachname}
                       onChange={e => {
@@ -523,7 +523,7 @@ export default function Mitmachen() {
                 {/* Display name */}
                 <div>
                   <div className="flex items-center justify-between mb-1.5">
-                    <p className="text-xs text-gray-400 font-semibold">Öffentlicher Profilname</p>
+                    <p className="text-xs text-gray-700 font-semibold">Öffentlicher Profilname</p>
                     <button
                       type="button"
                       onClick={() => set('display_name', generateDisplayName(form.vorname, form.nachname))}
@@ -537,7 +537,7 @@ export default function Mitmachen() {
                     onChange={e => set('display_name', e.target.value)}
                     placeholder="ElektroProfi Nord"
                   />
-                  <p className="text-xs text-gray-400 font-medium mt-1.5">So erscheinst du später auf der Plattform — ohne deinen echten Namen öffentlich zu zeigen.</p>
+                  <p className="text-xs text-gray-600 font-medium mt-1.5">So erscheinst du später auf der Plattform — ohne deinen echten Namen öffentlich zu zeigen.</p>
                 </div>
               </div>
 
@@ -619,7 +619,7 @@ export default function Mitmachen() {
 
                 {form.ausbildung === 'Ja, abgeschlossen' && (
                   <div className="mb-6">
-                    <p className="text-xs text-gray-400 font-semibold mb-1.5">Ausbildungsberuf</p>
+                    <p className="text-xs text-gray-700 font-semibold mb-1.5">Ausbildungsberuf</p>
                     <Input
                       value={form.ausbildungsberuf}
                       onChange={e => set('ausbildungsberuf', e.target.value)}
@@ -693,7 +693,7 @@ export default function Mitmachen() {
                   maxLength={500}
                   required
                 />
-                <p className="text-xs text-gray-300 text-right mt-1 font-medium">{form.bio.length}/500</p>
+                <p className="text-xs text-gray-500 text-right mt-1 font-medium">{form.bio.length}/500</p>
               </div>
 
               {/* Warum den Stundenlohn wert */}
@@ -771,7 +771,7 @@ export default function Mitmachen() {
                   />
                   <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 font-bold text-sm">€/h</span>
                 </div>
-                <p className="text-xs text-gray-400 font-medium mt-2">
+                <p className="text-xs text-gray-600 font-medium mt-2">
                   Weil Erfahrung, Ausbildung und Verlässlichkeit einen Wert haben. Qualifizierte Profile starten ab 20&nbsp;€/h.
                 </p>
               </div>
@@ -800,7 +800,7 @@ export default function Mitmachen() {
                       placeholder="deine@email.de"
                       required
                     />
-                    <p className="text-xs text-gray-400 font-medium mt-1.5">Nur intern sichtbar · Arbeitgeber-Anfragen kommen hierher</p>
+                    <p className="text-xs text-gray-600 font-medium mt-1.5">Nur intern sichtbar · Arbeitgeber-Anfragen kommen hierher</p>
                   </div>
                   <div>
                     <Label>WhatsApp <span className="font-medium normal-case tracking-normal text-gray-300">(optional)</span></Label>
@@ -810,7 +810,7 @@ export default function Mitmachen() {
                       onChange={e => set('whatsapp', e.target.value)}
                       placeholder="+49 170 1234567"
                     />
-                    <p className="text-xs text-gray-400 font-medium mt-1.5">Nur intern · nicht öffentlich sichtbar</p>
+                    <p className="text-xs text-gray-600 font-medium mt-1.5">Nur intern · nicht öffentlich sichtbar</p>
                   </div>
                   <div>
                     <Label>Telefon <span className="font-medium normal-case tracking-normal text-gray-300">(optional)</span></Label>
