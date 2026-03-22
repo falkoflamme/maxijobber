@@ -58,15 +58,15 @@ export default function Home() {
               </a>
             </div>
           </div>
-          <div className="mt-20 pt-10 border-t border-gray-300 grid grid-cols-3 gap-8 max-w-2xl">
+          <div className="mt-20 pt-10 border-t border-gray-300 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-2xl">
             {[
               ["Geprüft", "Jedes Profil wird manuell geprüft"],
               ["20 €/h", "Fairer Mindest-Stundensatz"],
               ["Geschützt", "Kontaktdaten erst nach Zustimmung"],
             ].map(([n, l]) => (
               <div key={l} className="border-l-[3px] border-yellow-500 pl-5">
-                <div className="text-4xl font-black text-yellow-500">{n}</div>
-                <div className="text-sm text-gray-400 font-medium mt-1">{l}</div>
+                <div className="text-2xl font-black text-yellow-500">{n}</div>
+                <div className="text-sm text-gray-600 font-medium mt-1">{l}</div>
               </div>
             ))}
           </div>
