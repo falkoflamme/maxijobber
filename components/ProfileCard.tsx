@@ -6,26 +6,23 @@ import Link from 'next/link'
 interface Profile {
   id: string
   full_name: string
+  display_name?: string | null
   role: string
+  berufsbereich?: string | null
   city: string
   bio?: string | null
   skills?: string[]
   hourly_rate?: number | null
-  phone?: string | null
-  whatsapp?: string | null
-  email?: string | null
   photo_url?: string | null
   available: boolean
   verified: boolean
+  erfahrung_stufe?: string | null
+  beschaeftigungsmodell?: string[] | null
 }
 
 export default function ProfileCard({ profile }: { profile: Profile }) {
-  const initials = profile.full_name
-    .split(' ')
-    .map(n => n[0])
-    .slice(0, 2)
-    .join('')
-    .toUpperCase()
+  const name = profile.display_name || profile.full_name
+  const initials = name.split(' ').map(n => n[0]).slice(0, 2).join('').toUpperCase()
 
   return (
     <div
@@ -37,23 +34,15 @@ export default function ProfileCard({ profile }: { profile: Profile }) {
         <div className="flex items-start gap-4 mb-4">
           <div className="w-14 h-14 overflow-hidden bg-gray-100 shrink-0 relative border-2 border-[#1a1a1a]">
             {profile.photo_url ? (
-              <Image
-                src={profile.photo_url}
-                alt={profile.full_name}
-                fill
-                className="object-cover"
-                sizes="56px"
-              />
+              <Image src={profile.photo_url} alt={name} fill className="object-cover" sizes="56px" />
             ) : (
-              <div className="w-full h-full flex items-center justify-center bg-gray-900 text-white font-black text-base">
-                {initials}
-              </div>
+              <div className="w-full h-full flex items-center justify-center bg-gray-900 text-white font-black text-base">{initials}</div>
             )}
           </div>
 
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="font-black text-base leading-tight">{profile.full_name}</span>
+              <span className="font-black text-base leading-tight">{name}</span>
               {profile.verified && (
                 <svg className="w-4 h-4 text-yellow-500 shrink-0" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
@@ -61,8 +50,9 @@ export default function ProfileCard({ profile }: { profile: Profile }) {
               )}
             </div>
             <div className="text-gray-500 text-sm font-medium mt-0.5">{profile.role}</div>
-            <div className="flex items-center gap-2 mt-1">
+            <div className="flex items-center gap-2 mt-1 flex-wrap">
               <span className="text-gray-400 text-xs font-medium">{profile.city}</span>
+              {profile.erfahrung_stufe && <span className="text-gray-300 text-xs">· {profile.erfahrung_stufe}</span>}
               <span className={`w-2 h-2 rounded-full ${profile.available ? 'bg-green-500' : 'bg-gray-300'}`} />
               <span className={`text-xs font-semibold ${profile.available ? 'text-green-600' : 'text-gray-400'}`}>
                 {profile.available ? 'Verfügbar' : 'Belegt'}
@@ -79,15 +69,11 @@ export default function ProfileCard({ profile }: { profile: Profile }) {
         {/* Skills */}
         {(profile.skills?.length || 0) > 0 && (
           <div className="flex flex-wrap gap-1.5 mb-4">
-            {profile.skills!.slice(0, 5).map(skill => (
-              <span key={skill} className="px-2.5 py-1 bg-gray-50 border border-gray-200 text-xs font-semibold">
-                {skill}
-              </span>
+            {profile.skills!.slice(0, 4).map(skill => (
+              <span key={skill} className="px-2.5 py-1 bg-gray-50 border border-gray-200 text-xs font-semibold">{skill}</span>
             ))}
-            {profile.skills!.length > 5 && (
-              <span className="px-2.5 py-1 bg-gray-50 border border-gray-200 text-xs font-semibold text-gray-400">
-                +{profile.skills!.length - 5}
-              </span>
+            {profile.skills!.length > 4 && (
+              <span className="px-2.5 py-1 bg-gray-50 border border-gray-200 text-xs font-semibold text-gray-400">+{profile.skills!.length - 4}</span>
             )}
           </div>
         )}
@@ -102,33 +88,13 @@ export default function ProfileCard({ profile }: { profile: Profile }) {
         )}
       </Link>
 
-      {/* Contact buttons */}
-      <div className="px-6 pb-5 flex gap-2 border-t-2 border-[#1a1a1a] pt-4">
-        {profile.whatsapp ? (
-          <a
-            href={`https://wa.me/${profile.whatsapp.replace(/\D/g, '')}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={e => e.stopPropagation()}
-            className="flex-1 py-2.5 font-black bg-green-500 text-white text-xs text-center hover:bg-green-600 transition border-2 border-[#1a1a1a]"
-          >
-            WhatsApp
-          </a>
-        ) : profile.phone ? (
-          <a
-            href={`tel:${profile.phone}`}
-            onClick={e => e.stopPropagation()}
-            className="flex-1 py-2.5 font-black bg-gray-900 text-white text-xs text-center hover:bg-gray-700 transition border-2 border-[#1a1a1a]"
-          >
-            Anrufen
-          </a>
-        ) : null}
-
+      {/* Footer */}
+      <div className="px-6 pb-5 border-t-2 border-[#1a1a1a] pt-4">
         <Link
           href={`/profil/${profile.id}`}
-          className="flex-1 py-2.5 font-black border-2 border-[#1a1a1a] text-xs text-center hover:bg-gray-900 hover:text-white transition"
+          className="block w-full py-2.5 font-black border-2 border-[#1a1a1a] text-xs text-center hover:bg-gray-900 hover:text-white transition uppercase tracking-widest"
         >
-          Profil →
+          Profil ansehen & Kontakt →
         </Link>
       </div>
     </div>

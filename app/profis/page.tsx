@@ -14,21 +14,18 @@ export const metadata: Metadata = {
 }
 
 const CITIES = ['Alle', 'Frankfurt', 'Offenbach', 'Wiesbaden', 'Darmstadt', 'Mainz']
-const ROLES = [
-  'Alle', 'Sous Chef', 'Chef de Partie', 'Head Waiter', 'Koch',
-  'Elektriker', 'Klempner', 'Maler', 'Schreiner', 'Trockenbauer', 'Servicekraft',
-]
+const BEREICHE = ['Alle', 'Hotellerie & Gastronomie', 'Handwerk & Technik', 'Reinigung & Facility', 'Lager & Logistik', 'Büro & Verwaltung', 'Verkauf & Handel', 'Garten & Landschaft', 'Bau & Ausbau']
 
 export default async function ProfisPage({
   searchParams,
 }: {
-  searchParams: { rolle?: string; city?: string; verfuegbar?: string }
+  searchParams: { bereich?: string; city?: string; verfuegbar?: string }
 }) {
   const supabase = createClient()
 
   let query = supabase
     .from('profiles')
-    .select('id, full_name, role, city, bio, skills, hourly_rate, phone, whatsapp, email, photo_url, available, verified')
+    .select('id, full_name, display_name, role, berufsbereich, city, bio, skills, hourly_rate, photo_url, available, verified, erfahrung_stufe, beschaeftigungsmodell')
     .eq('status', 'approved')
     .eq('verified', true)
     .order('available', { ascending: false })
@@ -36,17 +33,17 @@ export default async function ProfisPage({
 
   if (searchParams.verfuegbar === '1') query = query.eq('available', true)
   if (searchParams.city && searchParams.city !== 'Alle') query = query.ilike('city', `%${searchParams.city}%`)
-  if (searchParams.rolle && searchParams.rolle !== 'Alle') query = query.ilike('role', `%${searchParams.rolle}%`)
+  if (searchParams.bereich && searchParams.bereich !== 'Alle') query = query.ilike('berufsbereich', `%${searchParams.bereich}%`)
 
   const { data: profiles } = await query
 
-  const activeRolle = searchParams.rolle || 'Alle'
+  const activeBereich = searchParams.bereich || 'Alle'
   const activeCity = searchParams.city || 'Alle'
   const onlyAvailable = searchParams.verfuegbar === '1'
 
   function filterLink(update: Record<string, string>) {
     const p = new URLSearchParams({
-      rolle: activeRolle,
+      bereich: activeBereich,
       city: activeCity,
       ...(onlyAvailable ? { verfuegbar: '1' } : {}),
       ...update,
@@ -86,21 +83,21 @@ export default async function ProfisPage({
 
         {/* Filter bar */}
         <div className="bg-white border-2 border-[#1a1a1a] p-6 mb-8 space-y-5" style={{ boxShadow: '4px 4px 0px #1a1a1a' }}>
-          {/* Rollen */}
+          {/* Berufsbereich */}
           <div>
-            <p className="text-xs font-black uppercase tracking-widest text-gray-400 mb-3">Rolle</p>
+            <p className="text-xs font-black uppercase tracking-widest text-gray-400 mb-3">Berufsbereich</p>
             <div className="flex flex-wrap gap-2">
-              {ROLES.map(r => (
+              {BEREICHE.map(b => (
                 <a
-                  key={r}
-                  href={filterLink({ rolle: r })}
+                  key={b}
+                  href={filterLink({ bereich: b })}
                   className={`px-3.5 py-1.5 text-xs font-bold border-2 transition ${
-                    activeRolle === r
+                    activeBereich === b
                       ? 'border-gray-900 bg-gray-900 text-white'
                       : 'border-gray-300 hover:border-gray-900'
                   }`}
                 >
-                  {r}
+                  {b}
                 </a>
               ))}
             </div>
