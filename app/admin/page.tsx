@@ -44,9 +44,9 @@ export default async function AdminPage() {
       <div className="h-[3px] bg-yellow-500 w-full" />
       <div className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="max-w-5xl mx-auto flex items-center justify-between">
-          <a href="/" className="text-xl font-black tracking-tighter">
-            MAXI<span className="text-yellow-500">JOBBER</span>
-            <span className="ml-3 text-xs text-gray-400 font-semibold normal-case tracking-normal">Admin</span>
+          <a href="/" className="flex items-center gap-3">
+            <img src="/logo.png" alt="MaxiJobber" className="h-8 w-auto" />
+            <span className="text-xs text-gray-400 font-semibold">Admin</span>
           </a>
           <a href="/profis" className="text-sm font-semibold text-gray-400 hover:text-gray-900 transition">Profis ansehen</a>
         </div>

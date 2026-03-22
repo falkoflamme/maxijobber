@@ -7,9 +7,7 @@ export default function FuerUnternehmen() {
       {/* Nav */}
       <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-xl border-b border-gray-200">
         <div className="max-w-6xl mx-auto px-8 py-4 flex items-center justify-between">
-          <a href="/" className="text-xl font-black tracking-tighter">
-            MAXI<span className="text-yellow-500">JOBBER</span>
-          </a>
+          <a href="/"><img src="/logo.png" alt="MaxiJobber" className="h-8 w-auto" /></a>
           <div className="flex items-center gap-4">
             <a href="/mitmachen" className="text-sm font-semibold text-gray-400 hover:text-gray-900 transition">Für Fachkräfte</a>
             <a href="/unternehmen/anmelden" className="text-sm font-semibold text-gray-400 hover:text-gray-900 transition">Firmenzugang</a>
@@ -201,7 +199,7 @@ export default function FuerUnternehmen() {
 
       <footer className="py-10 px-8 bg-gray-950 border-t border-white/5 text-white">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <a href="/" className="text-lg font-black tracking-tighter">MAXI<span className="text-yellow-500">JOBBER</span></a>
+          <a href="/"><img src="/logo.png" alt="MaxiJobber" className="h-7 w-auto brightness-0 invert" /></a>
           <p className="text-white/20 text-sm font-medium">© 2026 MaxiJobber · Frankfurt am Main</p>
           <div className="flex gap-6 text-sm text-white/30 font-medium">
             <a href="/mitmachen" className="hover:text-white transition">Für Fachkräfte</a>

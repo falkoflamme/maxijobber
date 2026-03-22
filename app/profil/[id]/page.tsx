@@ -60,7 +60,7 @@ export default async function ProfilPage({ params }: Props) {
 
       <div className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="max-w-2xl mx-auto flex items-center justify-between">
-          <a href="/" className="text-xl font-black tracking-tighter">MAXI<span className="text-yellow-500">JOBBER</span></a>
+          <a href="/"><img src="/logo.png" alt="MaxiJobber" className="h-8 w-auto" /></a>
           <a href="/profis" className="text-sm font-semibold text-gray-400 hover:text-gray-900 transition">← Alle Profis</a>
         </div>
       </div>
@@ -233,7 +233,7 @@ export default async function ProfilPage({ params }: Props) {
 
       <footer className="border-t border-gray-200 bg-white px-6 py-8 mt-10">
         <div className="max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
-          <a href="/" className="text-lg font-black tracking-tighter">MAXI<span className="text-yellow-500">JOBBER</span></a>
+          <a href="/"><img src="/logo.png" alt="MaxiJobber" className="h-7 w-auto" /></a>
           <p className="text-gray-400 text-xs font-medium">Frankfurt am Main · Direktvermittlung · Keine Agentur</p>
           <a href="/mitmachen" className="text-xs font-black text-yellow-600 hover:text-yellow-700 transition">Profil erstellen →</a>
         </div>
