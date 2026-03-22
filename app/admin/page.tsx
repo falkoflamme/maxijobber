@@ -33,6 +33,12 @@ export default async function AdminPage() {
     .order('created_at', { ascending: false })
     .limit(20)
 
+  const { data: contacts } = await service
+    .from('contacts')
+    .select('id, firma, ansprechpartner, email, berufsbereich, beschaeftigungsmodell, nachricht, profile_id, created_at, profiles(display_name, full_name)')
+    .order('created_at', { ascending: false })
+    .limit(100)
+
   return (
     <div className="min-h-screen bg-[#F5F4F0]">
       <div className="h-[3px] bg-yellow-500 w-full" />
@@ -49,10 +55,11 @@ export default async function AdminPage() {
       <div className="max-w-5xl mx-auto px-6 py-8">
 
         {/* Stats */}
-        <div className="grid grid-cols-3 gap-4 mb-10">
+        <div className="grid grid-cols-4 gap-4 mb-10">
           {[
             { label: 'Ausstehend', value: pending?.length || 0, color: 'text-yellow-500' },
             { label: 'Freigeschaltet', value: approved?.length || 0, color: 'text-green-600' },
+            { label: 'Anfragen', value: contacts?.length || 0, color: 'text-blue-500' },
             { label: 'Abgelehnt', value: rejected?.length || 0, color: 'text-gray-400' },
           ].map(({ label, value, color }) => (
             <div key={label} className="bg-white border-2 border-[#1a1a1a] p-6" style={{ boxShadow: '4px 4px 0px #1a1a1a' }}>
@@ -218,6 +225,56 @@ export default async function AdminPage() {
                             />
                             <AdminActions profileId={p.id} action="reject" label="Sperren" />
                           </div>
+                        </td>
+                      </tr>
+                    )
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+
+        {/* Contacts / Anfragen */}
+        {(contacts?.length || 0) > 0 && (
+          <div className="mb-10">
+            <h2 className="text-xl font-black tracking-tight mb-5">Anfragen ({contacts!.length})</h2>
+            <div className="bg-white border-2 border-[#1a1a1a] overflow-hidden" style={{ boxShadow: '4px 4px 0px #1a1a1a' }}>
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b-2 border-[#1a1a1a]">
+                    <th className="text-left px-5 py-3 text-xs font-black uppercase tracking-widest text-gray-400">Datum</th>
+                    <th className="text-left px-5 py-3 text-xs font-black uppercase tracking-widest text-gray-400">Absender</th>
+                    <th className="text-left px-5 py-3 text-xs font-black uppercase tracking-widest text-gray-400">Firma</th>
+                    <th className="text-left px-5 py-3 text-xs font-black uppercase tracking-widest text-gray-400">Bereich / Modell</th>
+                    <th className="text-left px-5 py-3 text-xs font-black uppercase tracking-widest text-gray-400">Profil</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {contacts!.map(c => {
+                    const profileName = (c.profiles as { display_name?: string; full_name?: string } | null)?.display_name
+                      || (c.profiles as { display_name?: string; full_name?: string } | null)?.full_name
+                      || '—'
+                    return (
+                      <tr key={c.id} className="border-b border-gray-100 hover:bg-gray-50 transition align-top">
+                        <td className="px-5 py-3 text-xs text-gray-400 whitespace-nowrap">
+                          {new Date(c.created_at).toLocaleDateString('de-DE')}
+                        </td>
+                        <td className="px-5 py-3">
+                          <div className="font-semibold">{c.ansprechpartner}</div>
+                          <a href={`mailto:${c.email}`} className="text-xs text-blue-500 hover:underline">{c.email}</a>
+                        </td>
+                        <td className="px-5 py-3 text-gray-500">{c.firma || '—'}</td>
+                        <td className="px-5 py-3 text-gray-500">
+                          <div className="text-xs">{c.berufsbereich || '—'}</div>
+                          {c.beschaeftigungsmodell?.length > 0 && (
+                            <div className="text-xs text-gray-400">{c.beschaeftigungsmodell.join(', ')}</div>
+                          )}
+                        </td>
+                        <td className="px-5 py-3">
+                          {c.profile_id ? (
+                            <a href={`/profil/${c.profile_id}`} className="text-xs font-bold hover:text-yellow-600 transition">{profileName}</a>
+                          ) : '—'}
                         </td>
                       </tr>
                     )
