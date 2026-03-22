@@ -16,12 +16,11 @@ export default function Home() {
           </a>
           <div className="hidden md:flex items-center gap-10 text-sm font-semibold text-gray-400">
             <a href="#wie" className="hover:text-gray-900 transition">Wie es funktioniert</a>
-            <a href="/fuer-profis" className="hover:text-gray-900 transition">Fachkräfte</a>
-            <a href="/fuer-unternehmen" className="hover:text-gray-900 transition">Unternehmen</a>
+            <a href="/profis" className="hover:text-gray-900 transition">Fachkräfte</a>
           </div>
           <div className="flex items-center gap-4">
             <a href="/profis" className="text-sm font-semibold text-gray-400 hover:text-gray-900 transition">Profis ansehen</a>
-            <a href="/mitmachen" className="px-5 py-2.5 text-sm font-black bg-yellow-500 text-black rounded hover:bg-yellow-400 transition uppercase tracking-widest">
+            <a href="/mitmachen" className="px-5 py-2.5 text-sm font-black bg-yellow-500 text-black hover:bg-yellow-400 transition uppercase tracking-widest">
               Mitmachen
             </a>
           </div>
@@ -54,10 +53,10 @@ export default function Home() {
               </div>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 shrink-0">
-              <a href="/mitmachen" className="px-8 py-4 font-black bg-gray-900 text-white rounded hover:bg-gray-700 transition text-sm tracking-widest uppercase text-center">
+              <a href="/mitmachen" className="px-8 py-4 font-black bg-gray-900 text-white hover:bg-gray-700 transition text-sm tracking-widest uppercase text-center">
                 Als Fachkraft bewerben
               </a>
-              <a href="/profis" className="px-8 py-4 font-black border-2 border-gray-900 rounded hover:bg-gray-900 hover:text-white transition text-sm tracking-widest uppercase text-center">
+              <a href="/profis" className="px-8 py-4 font-black border-2 border-gray-900 hover:bg-gray-900 hover:text-white transition text-sm tracking-widest uppercase text-center">
                 Fachkräfte finden
               </a>
             </div>
@@ -65,7 +64,7 @@ export default function Home() {
           <div className="mt-20 pt-10 border-t border-gray-300 grid grid-cols-3 gap-8 max-w-2xl">
             {[
               ["100%", "Handverlesen & geprüft"],
-              ["25 €/h", "Fairer Mindest-Stundensatz"],
+              ["20 €/h", "Fairer Mindest-Stundensatz"],
               ["24h", "Bis zur Freischaltung"],
             ].map(([n, l]) => (
               <div key={l} className="border-l-[3px] border-yellow-500 pl-5">
@@ -90,8 +89,8 @@ export default function Home() {
         <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-px bg-white/5">
           {[
             ["Kein Marktplatz.", "Jeder kann sich auf Marktplätzen eintragen. Bei MaxiJobber prüfen wir jedes Profil manuell — bevor es online geht."],
-            ["Kein Preiskampf.", "Kein Bieten, kein Unterbieten. Jede Fachkraft setzt ihren fairen Preis ab 25\u00a0€/h — transparent und verhandelbar."],
-            ["Kein Mittelsmann.", "Unternehmen kontaktieren Fachkräfte direkt per WhatsApp oder Telefon. Keine Plattform-Gebühr, kein Aufschlag."],
+            ["Kein Preiskampf.", "Kein Bieten, kein Unterbieten. Jede Fachkraft setzt ihren fairen Preis ab 20\u00a0€/h — transparent und verhandelbar."],
+            ["Kein Mittelsmann.", "Anfragen laufen geschützt über die Plattform. Kontaktdaten werden nur nach Zustimmung der Fachkraft freigegeben."],
           ].map(([title, desc]) => (
             <div key={title} className="p-10">
               <div className="text-yellow-500 font-black text-xl mb-4 tracking-tight">{title}</div>
@@ -149,10 +148,10 @@ export default function Home() {
               <div className="space-y-5">
                 {[
                   "Nur geprüfte Fachkräfte mit nachgewiesener Erfahrung",
-                  "Direktkontakt — kein Agentur-Aufschlag, kein Ticket-System",
-                  "Transparente Profile: Name, Foto, Skills, Stundensatz — alles öffentlich",
-                  "Fairer Mindest-Stundensatz ab 25\u00a0€/h — Qualität hat ihren Preis",
-                  "Du sprichst direkt mit der Person die den Minijob übernimmt",
+                  "Anfragen laufen geschützt über die Plattform — kein Agentur-Aufschlag",
+                  "Transparente Profile: Alias, Foto, Skills, Stundensatz — alles öffentlich",
+                  "Fairer Mindest-Stundensatz ab 20\u00a0€/h — Qualität hat ihren Preis",
+                  "Kontaktdaten werden nur nach Zustimmung der Fachkraft freigegeben",
                 ].map(item => (
                   <div key={item} className="flex gap-3 items-start">
                     <div className="w-[3px] h-4 bg-yellow-500 shrink-0 mt-1" />
@@ -185,8 +184,8 @@ export default function Home() {
             <div className="space-y-0 mb-12 border-t border-gray-200">
               {[
                 "Geprüftes Profil — dauerhaftes Vertrauen bei Auftraggebern",
-                "Direkte Anfragen per WhatsApp oder Telefon",
-                "Dein Stundensatz ab 25 €/h — fairer Markt, kein Abzug",
+                "Anfragen kommen geschützt über die Plattform — du entscheidest wer deine Daten sieht",
+                "Dein Stundensatz ab 20 €/h — fairer Markt, kein Abzug",
                 "Minijob-Vertrag direkt mit dem Unternehmen — kein Middleman",
               ].map((item) => (
                 <div key={item} className="flex items-center gap-4 py-4 border-b border-gray-200">
@@ -195,24 +194,24 @@ export default function Home() {
                 </div>
               ))}
             </div>
-            <a href="/mitmachen" className="inline-block px-8 py-4 font-black bg-gray-900 text-white rounded hover:bg-gray-700 transition text-sm tracking-widest uppercase">
-              Jetzt bewerben — kostenlos
+            <a href="/mitmachen" className="inline-block px-8 py-4 font-black bg-gray-900 text-white hover:bg-gray-700 transition text-sm tracking-widest uppercase">
+              Jetzt Profil einreichen — kostenlos
             </a>
           </div>
           <div className="space-y-2">
             {[
-              { name: "Michael Reuter", job: "Elektriker", years: "8 Jahre", loc: "Frankfurt Mitte", rate: "42 €/h", avail: true },
-              { name: "Sandra Koch", job: "Sanitärinstallateur", years: "5 Jahre", loc: "Sachsenhausen", rate: "38 €/h", avail: true },
-              { name: "Thomas Braun", job: "Maler & Lackierer", years: "12 Jahre", loc: "Bornheim", rate: "34 €/h", avail: false },
-              { name: "Ayse Demir", job: "Trockenbauerin", years: "6 Jahre", loc: "Nordend", rate: "36 €/h", avail: true },
-            ].map(({ name, job, years, loc, rate, avail }) => (
-              <div key={name} className="flex items-center gap-5 p-5 bg-white border-2 border-black/10 shadow-[0_2px_8px_rgba(0,0,0,0.06)] hover:border-[#1a1a1a] hover:shadow-md transition-all">
+              { alias: "Der Frankfurter Elektriker", job: "Elektriker", years: "8 Jahre", loc: "Frankfurt Mitte", rate: "42 €/h", avail: true },
+              { alias: "Sanitär Profi Rhein-Main", job: "Sanitärinstallateur", years: "5 Jahre", loc: "Sachsenhausen", rate: "38 €/h", avail: true },
+              { alias: "Malermeister Bornheim", job: "Maler & Lackierer", years: "12 Jahre", loc: "Bornheim", rate: "34 €/h", avail: false },
+              { alias: "Trockenbau Nordend", job: "Trockenbauerin", years: "6 Jahre", loc: "Nordend", rate: "36 €/h", avail: true },
+            ].map(({ alias, job, years, loc, rate, avail }) => (
+              <div key={alias} className="flex items-center gap-5 p-5 bg-white border-2 border-black/10 shadow-[0_2px_8px_rgba(0,0,0,0.06)] hover:border-[#1a1a1a] hover:shadow-md transition-all">
                 <div className="w-11 h-11 bg-gray-900 flex items-center justify-center text-white font-black text-base shrink-0">
-                  {name[0]}
+                  {alias[0]}
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
-                    <span className="font-black text-sm">{name}</span>
+                    <span className="font-black text-sm">{alias}</span>
                     <svg className="w-3.5 h-3.5 text-yellow-500 shrink-0" viewBox="0 0 20 20" fill="currentColor">
                       <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
@@ -222,7 +221,7 @@ export default function Home() {
                 <div className="text-right shrink-0">
                   <div className="font-black text-sm">{rate}</div>
                   <div className={`text-xs font-semibold mt-0.5 ${avail ? "text-green-600" : "text-gray-400"}`}>
-                    {avail ? "Bereit für Minijob" : "Belegt"}
+                    {avail ? "Verfügbar" : "Belegt"}
                   </div>
                 </div>
               </div>
@@ -250,10 +249,10 @@ export default function Home() {
                 </div>
               ))}
             </div>
-            <a href="/profis" className="block w-full py-4 font-black bg-gray-900 text-white rounded hover:bg-gray-700 transition text-sm tracking-widest uppercase text-center">
+            <a href="/profis" className="block w-full py-4 font-black bg-gray-900 text-white hover:bg-gray-700 transition text-sm tracking-widest uppercase text-center">
               Fachkräfte durchsuchen →
             </a>
-            <p className="text-center text-xs text-gray-400 mt-3 font-medium">Kostenlos · Keine Registrierung · Direktkontakt</p>
+            <p className="text-center text-xs text-gray-400 mt-3 font-medium">Kostenlos · Keine Registrierung · Geschützter Kontakt</p>
           </div>
           <div>
             <p className="text-xs font-black uppercase tracking-[0.3em] text-yellow-500 mb-6">Für Unternehmen</p>
@@ -264,15 +263,15 @@ export default function Home() {
             </h2>
             <p className="text-gray-500 mb-10 leading-relaxed font-medium text-lg">
               Kein Recruiting. Kein Headhunter. Kein Bieten.
-              Alle Fachkräfte sind manuell geprüft — Sie schließen den
-              Minijob-Vertrag direkt ab. Ohne Aufschlag.
+              Alle Fachkräfte sind manuell geprüft — Anfragen laufen geschützt
+              über die Plattform. Ohne Aufschlag.
             </p>
             <div className="space-y-0 mb-12 border-t border-gray-300">
               {[
                 "Manuell geprüfte Profile — kein Spam, kein Risiko",
-                "Transparente Stundensätze ab 25 €/h",
-                "Minijob-Vertrag direkt mit der Fachkraft",
-                "Kontakt oft am selben Tag — lokal in Frankfurt",
+                "Transparente Stundensätze ab 20 €/h",
+                "Anfragen laufen geschützt — Kontaktdaten nur nach Zustimmung",
+                "Antwort oft am selben Tag — lokal in Frankfurt",
               ].map((item) => (
                 <div key={item} className="flex items-center gap-4 py-4 border-b border-gray-300">
                   <div className="w-[3px] h-4 bg-yellow-500 shrink-0" />
@@ -280,7 +279,7 @@ export default function Home() {
                 </div>
               ))}
             </div>
-            <a href="/profis" className="inline-block px-8 py-4 font-black bg-yellow-500 text-black rounded hover:bg-yellow-400 transition text-sm tracking-widest uppercase">
+            <a href="/profis" className="inline-block px-8 py-4 font-black bg-yellow-500 text-black hover:bg-yellow-400 transition text-sm tracking-widest uppercase">
               Jetzt Fachkraft finden
             </a>
           </div>
@@ -299,9 +298,9 @@ export default function Home() {
               <p className="text-xs font-black uppercase tracking-widest text-gray-400 mb-8">Für Fachkräfte</p>
               <div className="space-y-8">
                 {[
-                  ["01", "Profil einreichen", "Name, Rolle, Skills, Stundensatz — in 5 Minuten. Kein Konto nötig."],
+                  ["01", "Profil einreichen", "Alias, Rolle, Skills, Stundensatz — in 5 Minuten. Kein Konto nötig."],
                   ["02", "Wir prüfen dich", "Wir checken manuell ob du wirklich gut bist. Nur echte Profis kommen rein."],
-                  ["03", "Minijob vereinbaren", "Unternehmen finden dein Profil und kontaktieren dich direkt — Vertrag direkt zwischen euch."],
+                  ["03", "Anfragen erhalten", "Unternehmen finden dein Profil und schicken eine Anfrage über die Plattform. Du entscheidest ob deine Kontaktdaten freigegeben werden."],
                 ].map(([num, title, desc]) => (
                   <div key={num} className="flex gap-6 items-start">
                     <div className="text-3xl font-black text-gray-200 leading-none shrink-0 w-10">{num}</div>
@@ -312,8 +311,8 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-              <a href="/mitmachen" className="inline-block mt-10 px-6 py-3 font-black bg-gray-900 text-white rounded hover:bg-gray-700 transition text-xs tracking-widest uppercase">
-                Jetzt bewerben →
+              <a href="/mitmachen" className="inline-block mt-10 px-6 py-3 font-black bg-gray-900 text-white hover:bg-gray-700 transition text-xs tracking-widest uppercase">
+                Jetzt Profil einreichen →
               </a>
             </div>
             <div className="bg-white p-12">
@@ -322,7 +321,7 @@ export default function Home() {
                 {[
                   ["01", "Verzeichnis durchsuchen", "Alle geprüften Fachkräfte in Frankfurt — filterbar nach Rolle, Stadt, Verfügbarkeit."],
                   ["02", "Richtige Person finden", "Stundensatz, Skills und Bio sind transparent. Kein Rätselraten, kein Blindflug."],
-                  ["03", "Minijob-Vertrag abschließen", "Kontakt direkt per WhatsApp oder Telefon — Vertrag direkt zwischen Ihnen und der Fachkraft."],
+                  ["03", "Anfrage stellen", "Anfrage direkt über die Plattform — die Fachkraft entscheidet ob Kontaktdaten freigegeben werden."],
                 ].map(([num, title, desc]) => (
                   <div key={num} className="flex gap-6 items-start">
                     <div className="text-3xl font-black text-gray-200 leading-none shrink-0 w-10">{num}</div>
@@ -333,7 +332,7 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-              <a href="/profis" className="inline-block mt-10 px-6 py-3 font-black bg-yellow-500 text-black rounded hover:bg-yellow-400 transition text-xs tracking-widest uppercase">
+              <a href="/profis" className="inline-block mt-10 px-6 py-3 font-black bg-yellow-500 text-black hover:bg-yellow-400 transition text-xs tracking-widest uppercase">
                 Fachkräfte durchsuchen →
               </a>
             </div>
@@ -343,7 +342,7 @@ export default function Home() {
 
       {/* ── 10. LEGAL ── */}
       <section className="py-20 px-8 bg-gray-950 text-white">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-px bg-white/5">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-px bg-white/5">
           <div className="p-10">
             <p className="font-black text-yellow-500 mb-3 text-sm uppercase tracking-widest">Kostenlos</p>
             <p className="text-white/50 text-sm leading-relaxed font-medium">
@@ -358,16 +357,6 @@ export default function Home() {
               Minijob-Verträge werden direkt zwischen Fachkraft
               und Unternehmen abgeschlossen. Ihr regelt das selbst.
             </p>
-          </div>
-          <div className="p-10">
-            <p className="font-black text-yellow-500 mb-3 text-sm uppercase tracking-widest">Mustervertrag</p>
-            <p className="text-white/50 text-sm leading-relaxed font-medium mb-4">
-              Unser Minijob-Guide erklärt alles — mit Mustervertrag
-              für den ersten Einsatz.
-            </p>
-            <a href="/legal/minijob-guide" className="text-xs font-black text-white/40 hover:text-yellow-500 transition uppercase tracking-widest underline underline-offset-4">
-              Minijob-Guide →
-            </a>
           </div>
         </div>
       </section>
@@ -385,17 +374,17 @@ export default function Home() {
               Kein Marktplatz für jeden. Geprüfte Fachkräfte für reguläre Minijobs — direkt vermittelt.
             </p>
             <p className="text-yellow-400 font-black text-sm mt-3 uppercase tracking-widest">
-              <span className="text-yellow-400">Kostenlos</span> registrieren — dauert 5 Minuten.
+              Profil einreichen — dauert 5 Minuten.
             </p>
           </div>
           <div className="shrink-0 flex flex-col gap-3">
-            <a href="/mitmachen" className="px-8 py-4 font-black bg-yellow-500 text-black rounded hover:bg-yellow-400 transition text-sm tracking-widest uppercase text-center">
+            <a href="/mitmachen" className="px-8 py-4 font-black bg-yellow-500 text-black hover:bg-yellow-400 transition text-sm tracking-widest uppercase text-center">
               Als Fachkraft bewerben
             </a>
-            <a href="/profis" className="px-8 py-4 font-black border-2 border-white/30 rounded hover:border-white hover:bg-white/5 transition text-sm tracking-widest uppercase text-center">
+            <a href="/profis" className="px-8 py-4 font-black border-2 border-white/30 hover:border-white hover:bg-white/5 transition text-sm tracking-widest uppercase text-center">
               Fachkräfte durchsuchen
             </a>
-            <p className="text-white/20 text-xs text-center font-medium mt-1">Kostenlos · Kein Konto nötig · Direktkontakt</p>
+            <p className="text-white/20 text-xs text-center font-medium mt-1">Kostenlos · Kein Konto nötig · Geschützter Kontakt</p>
           </div>
         </div>
       </section>
@@ -415,8 +404,6 @@ export default function Home() {
               <div>
                 <p className="text-xs font-black uppercase tracking-widest text-white/20 mb-4">Plattform</p>
                 <div className="space-y-2">
-                  <a href="/fuer-profis" className="block text-sm text-white/40 hover:text-white transition font-medium">Für Fachkräfte</a>
-                  <a href="/fuer-unternehmen" className="block text-sm text-white/40 hover:text-white transition font-medium">Für Unternehmen</a>
                   <a href="/profis" className="block text-sm text-white/40 hover:text-white transition font-medium">Fachkräfte suchen</a>
                   <a href="/mitmachen" className="block text-sm text-white/40 hover:text-white transition font-medium">Profil einreichen</a>
                 </div>
@@ -424,8 +411,9 @@ export default function Home() {
               <div>
                 <p className="text-xs font-black uppercase tracking-widest text-white/20 mb-4">Info</p>
                 <div className="space-y-2">
-                  <a href="/legal/minijob-guide" className="block text-sm text-white/40 hover:text-white transition font-medium">Minijob-Guide</a>
-                  <a href="/admin" className="block text-sm text-white/40 hover:text-white transition font-medium">Admin</a>
+                  <a href="/impressum" className="block text-sm text-white/40 hover:text-white transition font-medium">Impressum</a>
+                  <a href="/datenschutz" className="block text-sm text-white/40 hover:text-white transition font-medium">Datenschutz</a>
+                  <a href="/agb" className="block text-sm text-white/40 hover:text-white transition font-medium">AGB</a>
                 </div>
               </div>
             </div>

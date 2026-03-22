@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef, useCallback } from 'react'
+import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 
 // Note: metadata in app/mitmachen/layout.tsx
@@ -227,7 +228,7 @@ export default function Mitmachen() {
   const [step, setStep] = useState(1)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-  const [success, setSuccess] = useState(false)
+  const router = useRouter()
 
   const TOTAL_STEPS = 4
 
@@ -325,30 +326,7 @@ export default function Mitmachen() {
     const data = await res.json()
 
     if (!res.ok) { setError(data.error || 'Fehler beim Einreichen.'); setLoading(false); return }
-    setSuccess(true)
-    setLoading(false)
-  }
-
-  // ── Success ─────────────────────────────────────────────────────────────────
-
-  if (success) {
-    return (
-      <div className="min-h-screen bg-[#F5F4F0] flex items-center justify-center px-6">
-        <div className="max-w-md w-full bg-white border-2 border-[#1a1a1a] p-10 text-center" style={{ boxShadow: '4px 4px 0px #1a1a1a' }}>
-          <div className="w-12 h-12 bg-yellow-500 flex items-center justify-center mx-auto mb-6 border-2 border-[#1a1a1a]">
-            <span className="text-xl font-black">✓</span>
-          </div>
-          <h1 className="text-3xl font-black tracking-tighter mb-3">Eingereicht.</h1>
-          <p className="text-gray-500 font-medium mb-2">
-            Dein Profil wird geprüft. Du bekommst eine Nachricht an <strong className="text-gray-900">{form.email}</strong> sobald es online ist.
-          </p>
-          <p className="text-gray-400 text-sm font-medium mb-8">Meistens innerhalb von 24 Stunden.</p>
-          <a href="/profis" className="inline-block px-6 py-3 font-black bg-gray-900 text-white text-sm hover:bg-gray-700 transition uppercase tracking-widest">
-            Andere Profile ansehen →
-          </a>
-        </div>
-      </div>
-    )
+    router.push('/mitmachen/danke')
   }
 
   // ── Progress bar ─────────────────────────────────────────────────────────────
