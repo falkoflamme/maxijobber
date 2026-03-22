@@ -13,7 +13,7 @@ export default function DankePage() {
       <div className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="max-w-2xl mx-auto">
           <a href="/" className="text-xl font-black tracking-tighter">
-            <img src="/logo2.png" alt="MaxiJobber" className="h-8 w-auto" />
+            <img src="/logo2.png" alt="MaxiJobber" className="h-10 w-auto" />
           </a>
         </div>
       </div>

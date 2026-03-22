@@ -11,14 +11,14 @@ export default function Home() {
       {/* Nav */}
       <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-xl border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-8 py-4 flex items-center justify-between">
-          <a href="/"><img src="/logo2.png" alt="MaxiJobber" className="h-8 w-auto" /></a>
+          <a href="/"><img src="/logo2.png" alt="MaxiJobber" className="h-10 w-auto" /></a>
           <div className="hidden md:flex items-center gap-10 text-sm font-semibold text-gray-400">
             <a href="#wie" className="hover:text-gray-900 transition">Wie es funktioniert</a>
             <a href="/mitmachen" className="hover:text-gray-900 transition">Für Fachkräfte</a>
             <a href="/unternehmen/anmelden" className="hover:text-gray-900 transition">Für Unternehmen</a>
           </div>
           <div className="flex items-center gap-4">
-            <a href="/profis" className="text-sm font-semibold text-gray-400 hover:text-gray-900 transition">Profis ansehen</a>
+            <a href="/profis" className="text-sm font-semibold text-gray-600 hover:text-gray-900 transition">Profis ansehen</a>
             <a href="/mitmachen" className="px-5 py-2.5 text-sm font-black bg-yellow-500 text-black hover:bg-yellow-400 transition uppercase tracking-widest">
               Profil erstellen
             </a>

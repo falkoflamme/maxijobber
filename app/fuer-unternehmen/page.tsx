@@ -7,10 +7,10 @@ export default function FuerUnternehmen() {
       {/* Nav */}
       <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-xl border-b border-gray-200">
         <div className="max-w-6xl mx-auto px-8 py-4 flex items-center justify-between">
-          <a href="/"><img src="/logo2.png" alt="MaxiJobber" className="h-8 w-auto" /></a>
+          <a href="/"><img src="/logo2.png" alt="MaxiJobber" className="h-10 w-auto" /></a>
           <div className="flex items-center gap-4">
-            <a href="/mitmachen" className="text-sm font-semibold text-gray-400 hover:text-gray-900 transition">Für Fachkräfte</a>
-            <a href="/unternehmen/anmelden" className="text-sm font-semibold text-gray-400 hover:text-gray-900 transition">Firmenzugang</a>
+            <a href="/mitmachen" className="text-sm font-semibold text-gray-600 hover:text-gray-900 transition">Für Fachkräfte</a>
+            <a href="/unternehmen/anmelden" className="text-sm font-semibold text-gray-600 hover:text-gray-900 transition">Firmenzugang</a>
             <a href="/profis" className="px-5 py-2.5 text-sm font-black bg-gray-900 text-white hover:bg-gray-700 transition uppercase tracking-widest border-2 border-[#1a1a1a]">
               Fachkräfte finden
             </a>

@@ -32,7 +32,7 @@ export default function LoginPage() {
     <div className="min-h-screen bg-white flex items-center justify-center px-6">
       <div className="w-full max-w-sm">
         <a href="/" className="inline-block mb-10 text-xl font-black tracking-tighter">
-          <img src="/logo2.png" alt="MaxiJobber" className="h-8 w-auto" />
+          <img src="/logo2.png" alt="MaxiJobber" className="h-10 w-auto" />
         </a>
 
         {sent ? (
