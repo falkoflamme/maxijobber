@@ -94,7 +94,7 @@ export default function ProfileCard({ profile }: { profile: Profile }) {
           href={`/profil/${profile.id}`}
           className="block w-full py-2.5 font-black border-2 border-[#1a1a1a] text-xs text-center hover:bg-gray-900 hover:text-white transition uppercase tracking-widest"
         >
-          Profil ansehen & Kontakt →
+          Profil ansehen →
         </Link>
       </div>
     </div>

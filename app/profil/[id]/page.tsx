@@ -107,7 +107,7 @@ export default async function ProfilPage({ params }: Props) {
               </div>
               <div className="text-right">
                 <div className="text-xs font-black uppercase tracking-widest text-gray-400 mb-1">Konditionen</div>
-                <div className="text-sm font-semibold text-gray-600">Direkt verhandelbar</div>
+                <div className="text-sm font-semibold text-gray-600">Individuell abstimmbar</div>
               </div>
             </div>
           )}
@@ -235,7 +235,7 @@ export default async function ProfilPage({ params }: Props) {
         <div className="max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <a href="/" className="text-lg font-black tracking-tighter">MAXI<span className="text-yellow-500">JOBBER</span></a>
           <p className="text-gray-400 text-xs font-medium">Frankfurt am Main · Direktvermittlung · Keine Agentur</p>
-          <a href="/mitmachen" className="text-xs font-black text-yellow-600 hover:text-yellow-700 transition">Selbst mitmachen →</a>
+          <a href="/mitmachen" className="text-xs font-black text-yellow-600 hover:text-yellow-700 transition">Profil erstellen →</a>
         </div>
       </footer>
     </div>

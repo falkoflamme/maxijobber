@@ -67,7 +67,7 @@ export default async function ProfisPage({
             href="/mitmachen"
             className="px-5 py-2.5 font-black bg-gray-900 text-white text-sm hover:bg-gray-700 transition uppercase tracking-widest"
           >
-            Mitmachen
+            Profil erstellen
           </a>
         </div>
       </div>
@@ -77,7 +77,7 @@ export default async function ProfisPage({
         <div className="mb-8">
           <p className="text-xs font-black uppercase tracking-[0.3em] text-yellow-500 mb-2">Frankfurt & Umgebung</p>
           <h1 className="text-5xl font-black tracking-tighter">
-            {profiles?.length || 0} {onlyAvailable ? 'verfügbare' : 'geprüfte'} Fachkräfte.
+            {profiles?.length || 0} {onlyAvailable ? 'aktuell verfügbare' : 'geprüfte'} Fachkräfte in Frankfurt und Umgebung.
           </h1>
         </div>
 
@@ -144,13 +144,13 @@ export default async function ProfisPage({
         {/* Grid */}
         {!profiles?.length ? (
           <div className="bg-white border-2 border-[#1a1a1a] p-14 text-center" style={{ boxShadow: '4px 4px 0px #1a1a1a' }}>
-            <div className="text-3xl font-black text-gray-200 mb-3">Keine Treffer</div>
-            <p className="text-gray-400 font-medium mb-6">Versuche andere Filter oder melde dich selbst an.</p>
+            <div className="text-3xl font-black text-gray-200 mb-3">Keine passenden Treffer.</div>
+            <p className="text-gray-400 font-medium mb-6">Passe die Filter an oder werde selbst sichtbar.</p>
             <a
               href="/mitmachen"
               className="inline-block px-6 py-3 font-black bg-gray-900 text-white text-sm hover:bg-gray-700 transition uppercase tracking-widest"
             >
-              Jetzt mitmachen →
+              Profil erstellen →
             </a>
           </div>
         ) : (
@@ -164,12 +164,12 @@ export default async function ProfisPage({
         {/* CTA */}
         <div className="mt-14 bg-gray-900 p-10 text-white text-center">
           <h2 className="text-3xl font-black tracking-tighter mb-3">Du bist Fachkraft?</h2>
-          <p className="text-white/40 font-medium mb-6">Stell dich vor — kostenlos, in 5 Minuten.</p>
+          <p className="text-white/40 font-medium mb-6">Zeig, was du kannst — kostenlos, in 5 Minuten.</p>
           <a
             href="/mitmachen"
             className="inline-block px-8 py-4 font-black bg-yellow-500 text-black hover:bg-yellow-400 transition text-sm uppercase tracking-widest"
           >
-            Profil einreichen →
+            Profil erstellen →
           </a>
         </div>
       </div>

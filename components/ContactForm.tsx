@@ -36,19 +36,19 @@ export default function ContactForm({ profileId, profileName }: { profileId: str
     <div className="bg-white border-2 border-[#1a1a1a] p-6" style={{ boxShadow: '4px 4px 0px #F5C518' }}>
       <h2 className="text-xs font-black uppercase tracking-widest text-gray-400 mb-2">Kontakt aufnehmen</h2>
       <p className="text-sm font-medium text-gray-500 mb-5">
-        Anfragen laufen geschützt über die Plattform — <strong className="text-gray-900">{profileName}</strong> erhält deine Nachricht per E-Mail.
+        Anfragen laufen zuerst geschützt über die Plattform — <strong className="text-gray-900">{profileName}</strong> entscheidet selbst, ob Kontaktdaten freigegeben werden.
       </p>
 
       {sent ? (
         <div className="flex items-start gap-3 px-4 py-4 bg-green-50 border-l-[3px] border-green-500">
-          <p className="text-sm font-bold text-green-800">Nachricht gesendet. {profileName} meldet sich bei dir.</p>
+          <p className="text-sm font-bold text-green-800">Anfrage gesendet. Wenn Interesse besteht, werden deine Kontaktdaten an {profileName} weitergegeben.</p>
         </div>
       ) : !open ? (
         <button
           onClick={() => setOpen(true)}
           className="w-full py-4 font-black bg-gray-900 text-white hover:bg-gray-700 transition text-sm tracking-widest uppercase border-2 border-[#1a1a1a]"
         >
-          Anfrage senden →
+          Anfrage stellen →
         </button>
       ) : (
         <form onSubmit={submit} className="space-y-4">
@@ -64,7 +64,7 @@ export default function ContactForm({ profileId, profileName }: { profileId: str
               />
             </div>
             <div>
-              <p className="text-xs text-gray-400 font-semibold mb-1.5">Unternehmen</p>
+              <p className="text-xs text-gray-400 font-semibold mb-1.5">Firmenname</p>
               <input
                 value={company}
                 onChange={e => setCompany(e.target.value)}
@@ -92,10 +92,10 @@ export default function ContactForm({ profileId, profileName }: { profileId: str
             </button>
             <button type="submit" disabled={loading}
               className="flex-1 py-3 font-black bg-yellow-500 text-black hover:bg-yellow-400 transition text-sm tracking-widest uppercase disabled:opacity-40 border-2 border-[#1a1a1a]">
-              {loading ? 'Wird gesendet...' : 'Anfrage senden →'}
+              {loading ? 'Wird gesendet...' : 'Anfrage stellen →'}
             </button>
           </div>
-          <p className="text-xs text-gray-400 font-medium">Kein Spam · Deine Daten werden nur zur Kontaktaufnahme verwendet.</p>
+          <p className="text-xs text-gray-400 font-medium">Deine Angaben werden nur für diese Anfrage verwendet.</p>
         </form>
       )}
     </div>

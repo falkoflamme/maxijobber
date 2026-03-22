@@ -358,11 +358,8 @@ export default function Mitmachen() {
         {step === 1 && (
           <div className="mb-10">
             <p className="text-xs font-black uppercase tracking-[0.3em] text-yellow-500 mb-3">Fachkraft werden</p>
-            <h1 className="text-4xl font-black tracking-tighter mb-2">Stell dich vor.</h1>
-            <p className="text-gray-400 font-medium mb-4">Kein Konto nötig. Wir prüfen dein Profil und schalten es frei.</p>
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-50 border-l-[3px] border-yellow-500">
-              <span className="text-sm font-bold text-yellow-800">Bis zu 538&nbsp;€ steuerfrei im Monat dazuverdienen.</span>
-            </div>
+            <h1 className="text-4xl font-black tracking-tighter mb-2">Erstelle dein Fachkräfte-Profil.</h1>
+            <p className="text-gray-400 font-medium mb-4">Kein offener Lebenslauf, kein unnötiges Bewerben. Zeig, was du kannst — wir prüfen dein Profil.</p>
           </div>
         )}
 
@@ -418,9 +415,9 @@ export default function Mitmachen() {
                   <Input
                     value={form.display_name}
                     onChange={e => set('display_name', e.target.value)}
-                    placeholder="Marco B."
+                    placeholder="ElektroProfi Nord"
                   />
-                  <p className="text-xs text-gray-400 font-medium mt-1.5">So wirst du auf der Plattform angezeigt — z.B. &bdquo;Marco B.&ldquo;</p>
+                  <p className="text-xs text-gray-400 font-medium mt-1.5">So erscheinst du später auf der Plattform — ohne deinen echten Namen öffentlich zu zeigen.</p>
                 </div>
               </div>
 
@@ -567,7 +564,7 @@ export default function Mitmachen() {
 
               {/* Kurzprofil */}
               <div className="bg-white border-2 border-[#1a1a1a] p-6">
-                <Label sub="Beschreibe dich fachlich — kurz und konkret.">Kurzprofil *</Label>
+                <Label sub="Beschreibe dich kurz, konkret und fachlich. Arbeitgeber sollen sofort verstehen, was du kannst.">Kurzprofil *</Label>
                 <Textarea
                   value={form.bio}
                   onChange={e => set('bio', e.target.value)}
@@ -576,12 +573,12 @@ export default function Mitmachen() {
                   maxLength={500}
                   required
                 />
-                <p className="text-xs text-gray-300 text-right mt-1 font-medium">{form.bio.length}/500 · KI verbessert deinen Text automatisch</p>
+                <p className="text-xs text-gray-300 text-right mt-1 font-medium">{form.bio.length}/500</p>
               </div>
 
               {/* Warum den Stundenlohn wert */}
               <div className="bg-white border-2 border-[#1a1a1a] p-6">
-                <Label sub="Pflichtfeld — zeig Arbeitgebern warum du deinen Preis wert bist.">Warum bist du deinen Stundenlohn wert? *</Label>
+                <Label sub="Zeig kurz, warum du ohne lange Einarbeitung echten Mehrwert bringst.">Warum bist du deinen Stundenlohn wert? *</Label>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {WARUM_TAGS.map(t => (
                     <YellowChip key={t} label={t} active={form.warum_tags.includes(t)}
@@ -655,7 +652,7 @@ export default function Mitmachen() {
                   <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 font-bold text-sm">€/h</span>
                 </div>
                 <p className="text-xs text-gray-400 font-medium mt-2">
-                  Bei MaxiJobber starten qualifizierte Profile ab 20&nbsp;€/h — weil Erfahrung, Ausbildung und Verlässlichkeit einen Wert haben.
+                  Weil Erfahrung, Ausbildung und Verlässlichkeit einen Wert haben. Qualifizierte Profile starten ab 20&nbsp;€/h.
                 </p>
               </div>
             </div>
@@ -669,7 +666,7 @@ export default function Mitmachen() {
               <div className="bg-white border-2 border-[#1a1a1a] p-6">
                 <div className="flex items-start gap-3 px-4 py-3 bg-yellow-50 border-l-[3px] border-yellow-500 mb-6">
                   <p className="text-sm font-bold text-yellow-800">
-                    Deine Kontaktdaten bleiben geschützt. Arbeitgeber nehmen zuerst über die Plattform Kontakt auf — du entscheidest ob du antwortest.
+                    Deine Kontaktdaten bleiben geschützt. Arbeitgeber fragen zuerst über die Plattform an — du entscheidest, ob du antwortest.
                   </p>
                 </div>
 
@@ -760,7 +757,7 @@ export default function Mitmachen() {
 
           {step === TOTAL_STEPS && (
             <p className="text-xs text-center text-gray-400 font-medium mt-4">
-              Dein Profil wird vor Veröffentlichung geprüft. Private Kontaktdaten bleiben geschützt.
+              Dein Profil wird manuell geprüft. Kontaktdaten bleiben geschützt und sind niemals öffentlich sichtbar.
             </p>
           )}
         </form>

@@ -28,15 +28,17 @@ export default function DankePage() {
             </div>
 
             <h1 className="text-3xl font-black tracking-tighter mb-3">Profil eingereicht.</h1>
-            <p className="text-gray-500 font-medium leading-relaxed mb-8">
-              Wir prüfen dein Profil manuell und schalten es frei sobald alles passt.
-              Das dauert in der Regel weniger als 24 Stunden.
+            <p className="text-gray-500 font-medium leading-relaxed mb-2">
+              Wir prüfen jetzt, ob alles passt. Nach Freischaltung erscheint dein Profil bei den Profis.
+            </p>
+            <p className="text-gray-400 text-sm font-medium mb-8">
+              Wir melden uns nur, wenn etwas fehlt oder angepasst werden muss.
             </p>
 
             <div className="bg-[#F5F4F0] border-2 border-gray-200 p-5 text-left mb-8 space-y-3">
               {[
                 "Profil wird manuell geprüft",
-                "Du erhältst keine separate Bestätigungs-E-Mail",
+                "Kontaktdaten bleiben geschützt und sind niemals öffentlich",
                 "Nach Freischaltung erscheinst du auf /profis",
               ].map((item) => (
                 <div key={item} className="flex items-center gap-3">
