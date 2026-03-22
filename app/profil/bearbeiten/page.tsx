@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 
 const BESCHAEFTIGUNGSMODELLE = ['Minijob', 'Kurzfristige Beschäftigung', 'Midijob', 'Teilzeit', 'Offen für mehrere Modelle']
@@ -8,7 +8,15 @@ const WOCHENTAGE = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So']
 const TAGESZEITEN = ['Früh (6–14 Uhr)', 'Mittel (10–18 Uhr)', 'Spät (14–22 Uhr)', 'Nacht', 'Flexibel']
 const EINSATZDAUER_OPTIONS = ['Einzelne Schichten', '1–4 Wochen', 'Bis 3 Monate', 'Langfristig', 'Flexibel']
 
-export default function ProfilBearbeiten() {
+export default function ProfilBearbeitenPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#F5F4F0] flex items-center justify-center"><p className="text-gray-400 font-semibold">Wird geladen...</p></div>}>
+      <ProfilBearbeiten />
+    </Suspense>
+  )
+}
+
+function ProfilBearbeiten() {
   const searchParams = useSearchParams()
   const token = searchParams.get('token')
 
