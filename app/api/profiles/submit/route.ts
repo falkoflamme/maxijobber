@@ -124,7 +124,7 @@ export async function POST(request: NextRequest) {
 
     if (error) {
       console.error('Profile insert error:', error)
-      return NextResponse.json({ error: `DB: ${error.message} (${error.code})` }, { status: 500 })
+      return NextResponse.json({ error: 'Einreichung fehlgeschlagen' }, { status: 500 })
     }
 
     // Admin notification email
