@@ -2,7 +2,6 @@ export default function FuerUnternehmen() {
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans overflow-x-hidden">
 
-      {/* Power stripe */}
       <div className="h-[3px] bg-yellow-500 w-full" />
 
       {/* Nav */}
@@ -12,8 +11,9 @@ export default function FuerUnternehmen() {
             MAXI<span className="text-yellow-500">JOBBER</span>
           </a>
           <div className="flex items-center gap-4">
-            <a href="/fuer-profis" className="text-sm font-semibold text-gray-400 hover:text-gray-900 transition">Für Fachkräfte</a>
-            <a href="/profis" className="px-5 py-2.5 text-sm font-black bg-gray-900 text-white rounded hover:bg-gray-700 transition uppercase tracking-widest">
+            <a href="/mitmachen" className="text-sm font-semibold text-gray-400 hover:text-gray-900 transition">Für Fachkräfte</a>
+            <a href="/unternehmen/anmelden" className="text-sm font-semibold text-gray-400 hover:text-gray-900 transition">Firmenzugang</a>
+            <a href="/profis" className="px-5 py-2.5 text-sm font-black bg-gray-900 text-white hover:bg-gray-700 transition uppercase tracking-widest border-2 border-[#1a1a1a]">
               Fachkräfte finden
             </a>
           </div>
@@ -40,18 +40,25 @@ export default function FuerUnternehmen() {
           <div className="flex flex-col md:flex-row md:items-end gap-10">
             <p className="text-xl text-gray-500 max-w-xl font-medium leading-relaxed">
               Kein Recruiting, kein Headhunter, keine Agentur. MaxiJobber zeigt Ihnen
-              geprüfte Fachkräfte in Frankfurt — direkt kontaktierbar, ohne Aufschlag.
+              geprüfte Fachkräfte in Frankfurt — geschützt anfragen, ohne Aufschlag.
             </p>
-            <div className="shrink-0">
-              <a href="/profis" className="inline-block px-8 py-4 font-black bg-gray-900 text-white rounded hover:bg-gray-700 transition text-sm tracking-widest uppercase">
-                Jetzt Fachkräfte suchen →
+            <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+              <a href="/profis" className="inline-block px-8 py-4 font-black bg-gray-900 text-white hover:bg-gray-700 transition text-sm tracking-widest uppercase border-2 border-[#1a1a1a]">
+                Fachkräfte finden →
+              </a>
+              <a href="/unternehmen/anmelden" className="inline-block px-8 py-4 font-black bg-yellow-500 text-black hover:bg-yellow-400 transition text-sm tracking-widest uppercase border-2 border-[#1a1a1a]">
+                Firmenzugang →
               </a>
             </div>
           </div>
 
           {/* Stats */}
           <div className="mt-20 pt-10 border-t border-gray-300 grid grid-cols-3 gap-8 max-w-2xl">
-            {[["24h", "Ø bis zum Kontakt"], ["0 €", "Keine Agenturgebühr"], ["100%", "Direktkontakt"]].map(([n, l]) => (
+            {[
+              ["0 €", "Keine Agenturgebühr"],
+              ["20 €/h", "Fairer Mindeststundensatz"],
+              ["Geschützt", "Kontakt über die Plattform"],
+            ].map(([n, l]) => (
               <div key={l} className="border-l-[3px] border-yellow-500 pl-5">
                 <div className="text-4xl font-black">{n}</div>
                 <div className="text-sm text-gray-400 font-medium mt-1">{l}</div>
@@ -70,9 +77,9 @@ export default function FuerUnternehmen() {
           </div>
           <div className="grid md:grid-cols-3 gap-px bg-white/10">
             {[
-              ["01", "Profil-Verzeichnis öffnen", "Alle verfügbaren Fachkräfte in Frankfurt — nach Rolle, Stadt und Verfügbarkeit filterbar. Kostenlos, ohne Anmeldung."],
-              ["02", "Richtige Person finden", "Stundensatz, Skills, Bio — alles transparent. Kein Rätselraten, kein Blind Date mit der falschen Fachkraft."],
-              ["03", "Direkt Kontakt aufnehmen", "WhatsApp, Telefon oder E-Mail — direkt mit der Fachkraft. Kein Mittelsmann, kein Ticket-System, kein Aufschlag."],
+              ["01", "Fachkraft finden", "Alle geprüften Profile in Frankfurt — nach Bereich, Stadt und Verfügbarkeit filterbar. Kostenlos, ohne Anmeldung."],
+              ["02", "Passende Person erkennen", "Stundensatz, Skills, Erfahrung — alles direkt sichtbar. Kein Rätselraten, kein Blind Date mit der falschen Person."],
+              ["03", "Geschützt anfragen", "Anfrage läuft zuerst über die Plattform. Die Fachkraft entscheidet selbst, ob Kontaktdaten freigegeben werden."],
             ].map(([num, title, desc]) => (
               <div key={num} className="p-10 bg-gray-950 hover:bg-gray-900 transition group">
                 <div className="text-7xl font-black text-white/5 group-hover:text-yellow-500/10 transition mb-6 leading-none">{num}</div>
@@ -93,10 +100,10 @@ export default function FuerUnternehmen() {
           <div className="grid md:grid-cols-2 gap-0 border-t border-gray-200">
             {[
               ["Geprüfte Qualifikationen", "Jede Fachkraft wird von MaxiJobber verifiziert — bevor sie online geht. Kein Risiko, keine bösen Überraschungen."],
-              ["Transparente Preise", "Jeder Fachkraft-Stundensatz ist öffentlich sichtbar. Ab 25 €/h — fairer Markt, kein Agentur-Aufschlag."],
-              ["Direkter Kontakt", "WhatsApp, Telefon oder E-Mail — direkt mit der Person. Keine Plattform-Gebühr pro Nachricht."],
-              ["Schnelle Besetzung", "Verfügbare Fachkräfte direkt erkennbar. Von erstem Klick bis zum Kontakt — oft am selben Tag."],
-              ["Keine Registrierung nötig", "Profil-Verzeichnis ist öffentlich. Einfach suchen, finden, kontaktieren — ohne Konto."],
+              ["Transparente Preise", "Jeder Stundensatz ist öffentlich sichtbar. Ab 20 €/h — fairer Markt, kein Agentur-Aufschlag."],
+              ["Geschützte Anfragen", "Kontakt läuft zuerst über die Plattform. Datenschutz für beide Seiten — Fachkraft entscheidet über Freigabe."],
+              ["Schnelle Besetzung", "Verfügbare Fachkräfte direkt erkennbar. Von erstem Klick bis zur Anfrage — in Minuten."],
+              ["Eigener Firmenzugang", "Als Unternehmen anmelden, Bedarf eingeben, Anfragen verwalten — alles an einem Ort."],
               ["Lokaler Fokus", "Fachkräfte aus Frankfurt und Rhein-Main. Kurze Wege, lokale Kenntnis, kein Ferndienstleister."],
             ].map(([title, desc]) => (
               <div key={title} className="border-b border-gray-200 py-8 px-0 md:px-8 md:odd:border-r md:odd:pl-0 md:even:pr-0">
@@ -122,19 +129,18 @@ export default function FuerUnternehmen() {
               KEINE<br />AGENTUR&shy;GEBÜHR.
             </h2>
             <p className="text-gray-500 font-medium leading-relaxed text-lg mb-8">
-              MaxiJobber ist ein offenes Verzeichnis — Sie browsen, Sie finden,
-              Sie kontaktieren. Direkt. Was Sie mit der Fachkraft vereinbaren,
-              bleibt zwischen Ihnen.
+              MaxiJobber ist ein kuratiertes Verzeichnis — Sie finden, Sie fragen an.
+              Was Sie mit der Fachkraft vereinbaren, bleibt zwischen Ihnen.
             </p>
-            <a href="/profis" className="inline-block px-8 py-4 font-black bg-gray-900 text-white rounded hover:bg-gray-700 transition text-sm tracking-widest uppercase">
+            <a href="/profis" className="inline-block px-8 py-4 font-black bg-gray-900 text-white hover:bg-gray-700 transition text-sm tracking-widest uppercase border-2 border-[#1a1a1a]">
               Verzeichnis öffnen →
             </a>
           </div>
           <div className="space-y-0 border-t border-gray-300">
             {[
               ["Suchen & Filtern", "Kostenlos. Unbegrenzt. Ohne Anmeldung."],
-              ["Profil ansehen", "Alle Infos öffentlich — Skills, Rate, Kontakt."],
-              ["Direktkontakt", "WhatsApp, Telefon, E-Mail. Keine Plattform dazwischen."],
+              ["Profil ansehen", "Alle Infos öffentlich — Skills, Rate, Erfahrung."],
+              ["Anfrage stellen", "Geschützt über die Plattform. Die Fachkraft entscheidet über Kontaktfreigabe."],
               ["Konditionen verhandeln", "Direkt mit der Fachkraft. MaxiJobber verdient nichts daran."],
             ].map(([title, desc]) => (
               <div key={title} className="flex items-start gap-4 py-6 border-b border-gray-300">
@@ -179,14 +185,14 @@ export default function FuerUnternehmen() {
           </h2>
           <div className="shrink-0">
             <p className="text-white/40 mb-8 font-medium max-w-sm leading-relaxed">
-              Alle verfügbaren Fachkräfte in Frankfurt — öffentlich, kostenlos, direkt kontaktierbar.
+              Geprüfte Fachkräfte in Frankfurt — geschützte Anfragen, kein Aufschlag, kein Mittelsmann.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
-              <a href="/profis" className="px-8 py-4 font-black bg-yellow-500 text-black rounded hover:bg-yellow-400 transition text-sm tracking-widest uppercase text-center">
-                Fachkräfte durchsuchen
+              <a href="/profis" className="px-8 py-4 font-black bg-yellow-500 text-black hover:bg-yellow-400 transition text-sm tracking-widest uppercase text-center border-2 border-yellow-500">
+                Fachkräfte finden →
               </a>
-              <a href="/fuer-profis" className="px-8 py-4 font-black border-2 border-white/30 rounded hover:border-white hover:bg-white/5 transition text-sm tracking-widest uppercase text-center">
-                Selbst mitmachen
+              <a href="/unternehmen/anmelden" className="px-8 py-4 font-black border-2 border-white/30 hover:border-white hover:bg-white/5 transition text-sm tracking-widest uppercase text-center">
+                Firmenzugang →
               </a>
             </div>
           </div>
@@ -198,7 +204,7 @@ export default function FuerUnternehmen() {
           <a href="/" className="text-lg font-black tracking-tighter">MAXI<span className="text-yellow-500">JOBBER</span></a>
           <p className="text-white/20 text-sm font-medium">© 2026 MaxiJobber · Frankfurt am Main</p>
           <div className="flex gap-6 text-sm text-white/30 font-medium">
-            <a href="/fuer-profis" className="hover:text-white transition">Für Fachkräfte</a>
+            <a href="/mitmachen" className="hover:text-white transition">Für Fachkräfte</a>
             <a href="/datenschutz" className="hover:text-white transition">Datenschutz</a>
             <a href="/impressum" className="hover:text-white transition">Impressum</a>
           </div>
