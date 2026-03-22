@@ -8,7 +8,7 @@ export default function FuerProfis() {
       {/* Nav */}
       <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-xl border-b border-gray-200">
         <div className="max-w-6xl mx-auto px-8 py-4 flex items-center justify-between">
-          <a href="/"><img src="/logo.png" alt="MaxiJobber" className="h-8 w-auto" /></a>
+          <a href="/"><img src="/logo2.png" alt="MaxiJobber" className="h-8 w-auto" /></a>
           <div className="flex items-center gap-4">
             <a href="/profis" className="text-sm font-semibold text-gray-400 hover:text-gray-900 transition">Profis ansehen</a>
             <a href="/mitmachen" className="px-5 py-2.5 text-sm font-black bg-gray-900 text-white rounded hover:bg-gray-700 transition uppercase tracking-widest">
@@ -166,7 +166,7 @@ export default function FuerProfis() {
 
       <footer className="py-10 px-8 bg-gray-950 border-t border-white/5 text-white">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <a href="/"><img src="/logo.png" alt="MaxiJobber" className="h-7 w-auto brightness-0 invert" /></a>
+          <a href="/"><img src="/logo2.png" alt="MaxiJobber" className="h-7 w-auto brightness-0 invert" /></a>
           <p className="text-white/20 text-sm font-medium">© 2026 MaxiJobber · Frankfurt am Main</p>
           <div className="flex gap-6 text-sm text-white/30 font-medium">
             <a href="/legal/minijob-guide" className="hover:text-white transition">Minijob-Guide</a>

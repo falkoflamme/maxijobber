@@ -107,7 +107,7 @@ function ProfilBearbeiten() {
       <div className="h-[3px] bg-yellow-500 w-full" />
       <div className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="max-w-xl mx-auto">
-          <a href="/"><img src="/logo.png" alt="MaxiJobber" className="h-8 w-auto" /></a>
+          <a href="/"><img src="/logo2.png" alt="MaxiJobber" className="h-8 w-auto" /></a>
         </div>
       </div>
 

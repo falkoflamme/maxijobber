@@ -33,7 +33,7 @@ export default function UnternehmenAnmelden() {
       <div className="h-[3px] bg-yellow-500 w-full" />
       <div className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="max-w-xl mx-auto flex items-center justify-between">
-          <a href="/"><img src="/logo.png" alt="MaxiJobber" className="h-8 w-auto" /></a>
+          <a href="/"><img src="/logo2.png" alt="MaxiJobber" className="h-8 w-auto" /></a>
           <a href="/profis" className="text-sm font-semibold text-gray-400 hover:text-gray-900 transition">Fachkräfte ansehen</a>
         </div>
       </div>

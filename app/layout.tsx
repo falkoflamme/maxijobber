@@ -10,6 +10,11 @@ const geistSans = localFont({
 })
 
 export const metadata: Metadata = {
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-icon.png',
+    shortcut: '/icon.png',
+  },
   title: 'MaxiJobber — Geprüfte Fachkräfte für Minijobs in Frankfurt.',
   description: 'MaxiJobber verbindet geprüfte Fachkräfte direkt mit Unternehmen in Frankfurt — für reguläre Minijobs, ohne Agentur, ohne Aufschlag.',
   keywords: 'Fachkräfte Frankfurt, Minijob Frankfurt, Elektriker Minijob, Handwerker Frankfurt, Minijob Vermittlung Frankfurt, 538 Euro Job',

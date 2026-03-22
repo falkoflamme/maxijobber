@@ -11,7 +11,7 @@ export default function Home() {
       {/* Nav */}
       <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-xl border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-8 py-4 flex items-center justify-between">
-          <a href="/"><img src="/logo.png" alt="MaxiJobber" className="h-8 w-auto" /></a>
+          <a href="/"><img src="/logo2.png" alt="MaxiJobber" className="h-8 w-auto" /></a>
           <div className="hidden md:flex items-center gap-10 text-sm font-semibold text-gray-400">
             <a href="#wie" className="hover:text-gray-900 transition">Wie es funktioniert</a>
             <a href="/mitmachen" className="hover:text-gray-900 transition">Für Fachkräfte</a>
@@ -389,7 +389,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between gap-10 mb-10">
             <div>
-              <a href="/"><img src="/logo.png" alt="MaxiJobber" className="h-8 w-auto brightness-0 invert" /></a>
+              <a href="/"><img src="/logo2.png" alt="MaxiJobber" className="h-8 w-auto brightness-0 invert" /></a>
               <p className="text-white/30 text-sm font-medium mt-2 max-w-xs leading-relaxed">
                 Geprüfte Fachkräfte für faire Minijobs, kurzfristige Einsätze und flexible Arbeit in Frankfurt und Rhein-Main.
               </p>
