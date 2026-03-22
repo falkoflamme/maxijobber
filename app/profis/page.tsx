@@ -61,7 +61,7 @@ export default async function ProfisPage({
       <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <a href="/" className="text-xl font-black tracking-tighter">
-            MAXI<span className="text-yellow-500">JOBBER</span>
+            <img src="/logo2.png" alt="MaxiJobber" className="h-8 w-auto" />
           </a>
           <a
             href="/mitmachen"

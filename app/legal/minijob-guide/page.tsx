@@ -3,7 +3,7 @@ export default function MinijobGuide() {
     <div className="min-h-screen bg-white">
       <div className="border-b border-gray-100 px-8 py-5">
         <a href="/" className="text-xl font-black tracking-tighter">
-          MAXI<span className="text-yellow-500">JOBBER</span>
+          <img src="/logo2.png" alt="MaxiJobber" className="h-8 w-auto" />
         </a>
       </div>
 
