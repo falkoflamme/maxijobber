@@ -3,6 +3,8 @@
 import { useState, useRef, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
+import Cropper from 'react-easy-crop'
+import type { Area } from 'react-easy-crop'
 
 // Note: metadata in app/mitmachen/layout.tsx
 
@@ -175,6 +177,103 @@ function SectionTitle({ step, total, title }: { step: number; total: number; tit
   )
 }
 
+// ── Photo crop helper ─────────────────────────────────────────────────────────
+
+async function getCroppedImg(imageSrc: string, pixelCrop: Area): Promise<{ file: File; url: string }> {
+  const img = await new Promise<HTMLImageElement>((resolve) => {
+    const image = new window.Image()
+    image.onload = () => resolve(image)
+    image.src = imageSrc
+  })
+  const canvas = document.createElement('canvas')
+  const size = 600
+  canvas.width = size
+  canvas.height = size
+  const ctx = canvas.getContext('2d')!
+  ctx.drawImage(img, pixelCrop.x, pixelCrop.y, pixelCrop.width, pixelCrop.height, 0, 0, size, size)
+  return new Promise((resolve) => {
+    canvas.toBlob(blob => {
+      const file = new File([blob!], 'photo.jpg', { type: 'image/jpeg' })
+      const url = URL.createObjectURL(blob!)
+      resolve({ file, url })
+    }, 'image/jpeg', 0.9)
+  })
+}
+
+// ── Photo Crop Modal ───────────────────────────────────────────────────────────
+
+function PhotoCropModal({ src, onDone, onCancel }: {
+  src: string
+  onDone: (file: File, url: string) => void
+  onCancel: () => void
+}) {
+  const [crop, setCrop] = useState({ x: 0, y: 0 })
+  const [zoom, setZoom] = useState(1)
+  const [croppedArea, setCroppedArea] = useState<Area | null>(null)
+  const [saving, setSaving] = useState(false)
+
+  async function confirm() {
+    if (!croppedArea) return
+    setSaving(true)
+    const result = await getCroppedImg(src, croppedArea)
+    onDone(result.file, result.url)
+    setSaving(false)
+  }
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 px-4">
+      <div className="bg-white border-2 border-[#1a1a1a] w-full max-w-sm" style={{ boxShadow: '6px 6px 0px #F5C518' }}>
+        <div className="px-6 py-4 border-b-2 border-[#1a1a1a]">
+          <p className="text-xs font-black uppercase tracking-widest text-gray-900">Foto zuschneiden</p>
+          <p className="text-xs text-gray-400 font-medium mt-1">Verschiebe und zoome — der Rahmen ist der Ausschnitt.</p>
+        </div>
+        <div className="relative h-72 bg-gray-900">
+          <Cropper
+            image={src}
+            crop={crop}
+            zoom={zoom}
+            aspect={1}
+            cropShape="rect"
+            showGrid={false}
+            onCropChange={setCrop}
+            onZoomChange={setZoom}
+            onCropComplete={(_, area) => setCroppedArea(area)}
+          />
+        </div>
+        <div className="px-6 py-4 border-t border-gray-100">
+          <p className="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-widest">Zoom</p>
+          <input
+            type="range"
+            min={1}
+            max={3}
+            step={0.01}
+            value={zoom}
+            onChange={e => setZoom(Number(e.target.value))}
+            className="w-full accent-yellow-500 cursor-pointer"
+          />
+        </div>
+        <div className="flex gap-3 px-6 pb-6">
+          <button
+            type="button"
+            onClick={onCancel}
+            className="px-5 py-3 font-black border-2 border-gray-200 text-sm hover:border-gray-900 transition uppercase tracking-widest"
+          >
+            Abbrechen
+          </button>
+          <button
+            type="button"
+            onClick={confirm}
+            disabled={saving}
+            className="flex-1 py-3 font-black bg-yellow-500 text-black hover:bg-yellow-400 transition text-sm tracking-widest uppercase border-2 border-[#1a1a1a] disabled:opacity-40"
+          >
+            {saving ? 'Wird verarbeitet...' : 'Übernehmen →'}
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 // ── DragDrop Photo ─────────────────────────────────────────────────────────────
 
 function DragDropPhoto({ preview, onFile }: { preview: string | null; onFile: (f: File) => void }) {
@@ -194,12 +293,17 @@ function DragDropPhoto({ preview, onFile }: { preview: string | null; onFile: (f
       onDragOver={e => { e.preventDefault(); setDragging(true) }}
       onDragLeave={() => setDragging(false)}
       onDrop={handleDrop}
-      className={`relative w-full h-48 border-2 border-dashed flex flex-col items-center justify-center cursor-pointer transition ${
+      className={`relative w-full h-48 border-2 border-dashed flex flex-col items-center justify-center cursor-pointer transition group ${
         dragging ? 'border-yellow-500 bg-yellow-50' : 'border-gray-300 hover:border-gray-900 bg-gray-50'
       }`}
     >
       {preview ? (
-        <Image src={preview} alt="Vorschau" fill className="object-cover" />
+        <>
+          <Image src={preview} alt="Vorschau" fill className="object-cover" />
+          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 flex items-center justify-center transition-all opacity-0 group-hover:opacity-100">
+            <span className="text-white font-black text-xs uppercase tracking-widest bg-black/70 px-3 py-1.5">Foto ändern</span>
+          </div>
+        </>
       ) : (
         <div className="text-center px-4">
           <div className="text-3xl text-gray-300 mb-2 font-black">↑</div>
@@ -225,6 +329,8 @@ export default function Mitmachen() {
   const [form, setForm] = useState<FormState>(INITIAL)
   const [photo, setPhoto] = useState<File | null>(null)
   const [photoPreview, setPhotoPreview] = useState<string | null>(null)
+  const [cropSrc, setCropSrc] = useState<string | null>(null)
+  const [cropOpen, setCropOpen] = useState(false)
   const [step, setStep] = useState(1)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -245,9 +351,16 @@ export default function Mitmachen() {
 
   function handlePhoto(file: File) {
     if (file.size > 5 * 1024 * 1024) { setError('Foto max 5 MB'); return }
-    setPhoto(file)
-    setPhotoPreview(URL.createObjectURL(file))
     setError('')
+    setCropSrc(URL.createObjectURL(file))
+    setCropOpen(true)
+  }
+
+  function handleCropDone(file: File, url: string) {
+    setPhoto(file)
+    setPhotoPreview(url)
+    setCropOpen(false)
+    setCropSrc(null)
   }
 
   function addSkill(s: string) {
@@ -335,6 +448,13 @@ export default function Mitmachen() {
 
   return (
     <div className="min-h-screen bg-[#F5F4F0]">
+      {cropOpen && cropSrc && (
+        <PhotoCropModal
+          src={cropSrc}
+          onDone={handleCropDone}
+          onCancel={() => { setCropOpen(false); setCropSrc(null) }}
+        />
+      )}
       <div className="h-[3px] bg-yellow-500 w-full" />
 
       {/* Nav */}
