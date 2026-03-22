@@ -5,6 +5,7 @@ import { useState } from 'react'
 export default function ContactForm({ profileId, profileName }: { profileId: string; profileName: string }) {
   const [open, setOpen] = useState(false)
   const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
   const [company, setCompany] = useState('')
   const [message, setMessage] = useState('')
   const [loading, setLoading] = useState(false)
@@ -13,14 +14,14 @@ export default function ContactForm({ profileId, profileName }: { profileId: str
 
   async function submit(e: React.FormEvent) {
     e.preventDefault()
-    if (!name || !message) { setError('Name und Nachricht sind Pflicht.'); return }
+    if (!name || !email || !message) { setError('Name, E-Mail und Nachricht sind Pflicht.'); return }
     setLoading(true)
     setError('')
 
     const res = await fetch('/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ profile_id: profileId, sender_name: name, sender_company: company, message }),
+      body: JSON.stringify({ profile_id: profileId, sender_name: name, sender_email: email, sender_company: company, message }),
     })
 
     if (res.ok) {
@@ -72,6 +73,17 @@ export default function ContactForm({ profileId, profileName }: { profileId: str
                 className="w-full px-4 py-3 border-2 border-gray-200 text-sm font-medium focus:outline-none focus:border-gray-900 transition"
               />
             </div>
+          </div>
+          <div>
+            <p className="text-xs text-gray-400 font-semibold mb-1.5">Ihre E-Mail *</p>
+            <input
+              type="email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              placeholder="max@firma.de"
+              required
+              className="w-full px-4 py-3 border-2 border-gray-200 text-sm font-medium focus:outline-none focus:border-gray-900 transition"
+            />
           </div>
           <div>
             <p className="text-xs text-gray-400 font-semibold mb-1.5">Ihre Nachricht *</p>

@@ -4,9 +4,9 @@ import { Resend } from 'resend'
 
 export async function POST(request: NextRequest) {
   try {
-    const { profile_id, sender_name, sender_company, message } = await request.json()
+    const { profile_id, sender_name, sender_email, sender_company, message } = await request.json()
 
-    if (!profile_id || !sender_name || !message) {
+    if (!profile_id || !sender_name || !sender_email || !message) {
       return NextResponse.json({ error: 'Pflichtfelder fehlen' }, { status: 400 })
     }
 
@@ -42,6 +42,7 @@ export async function POST(request: NextRequest) {
           <table style="font-size:14px;border-collapse:collapse;margin:20px 0;width:100%">
             <tr><td style="padding:6px 16px 6px 0;color:#888;white-space:nowrap">Von</td><td style="font-weight:700">${sender_name}</td></tr>
             ${sender_company ? `<tr><td style="padding:6px 16px 6px 0;color:#888">Unternehmen</td><td>${sender_company}</td></tr>` : ''}
+            <tr><td style="padding:6px 16px 6px 0;color:#888;white-space:nowrap">E-Mail</td><td style="font-weight:700">${sender_email}</td></tr>
           </table>
 
           <div style="background:#f9f9f9;border-left:3px solid #F5C518;padding:16px;margin:20px 0;font-size:14px;color:#333;line-height:1.6">
@@ -49,7 +50,7 @@ export async function POST(request: NextRequest) {
           </div>
 
           <p style="font-size:13px;color:#888;margin-top:24px">
-            Du kannst direkt auf diese E-Mail antworten um Kontakt aufzunehmen.
+            Antworte einfach auf diese E-Mail — deine Antwort geht direkt an ${sender_name} (${sender_email}).
             MaxiJobber ist nur die Plattform — alle weiteren Absprachen laufen direkt zwischen dir und dem Auftraggeber.
           </p>
 
@@ -58,7 +59,7 @@ export async function POST(request: NextRequest) {
           </p>
         </div>
       `,
-      replyTo: undefined, // sender has no email here — they contact via the form
+      replyTo: sender_email,
     })
 
     return NextResponse.json({ success: true })
