@@ -172,7 +172,7 @@ function SectionTitle({ step, total, title }: { step: number; total: number; tit
   return (
     <div className="mb-8">
       <p className="text-xs font-black uppercase tracking-widest text-yellow-500 mb-1">Schritt {step} von {total}</p>
-      <h2 className="text-2xl font-black tracking-tighter">{title}</h2>
+      <h2 className="text-2xl font-black tracking-tighter text-gray-900">{title}</h2>
     </div>
   )
 }
@@ -478,8 +478,8 @@ export default function Mitmachen() {
         {step === 1 && (
           <div className="mb-10">
             <p className="text-xs font-black uppercase tracking-[0.3em] text-yellow-500 mb-3">Fachkraft werden</p>
-            <h1 className="text-4xl font-black tracking-tighter mb-2">Erstelle dein Fachkräfte-Profil.</h1>
-            <p className="text-gray-400 font-medium mb-4">Kein offener Lebenslauf, kein unnötiges Bewerben. Zeig, was du kannst — wir prüfen dein Profil.</p>
+            <h1 className="text-4xl font-black tracking-tighter mb-2 text-gray-900">Erstelle dein Fachkräfte-Profil.</h1>
+            <p className="text-gray-600 font-medium mb-4">Kein offener Lebenslauf, kein unnötiges Bewerben. Zeig, was du kannst — wir prüfen dein Profil.</p>
           </div>
         )}
 
