@@ -2,6 +2,7 @@ import { createClient } from '@/lib/supabase/server'
 import { createServiceClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import AdminActions from './AdminActions'
+import AdminEditButton from './AdminEditButton'
 
 const ADMIN_EMAILS = (process.env.ADMIN_EMAILS || 'admin@maxijobber.de').split(',')
 
@@ -20,7 +21,7 @@ export default async function AdminPage() {
 
   const { data: approved } = await service
     .from('profiles')
-    .select('id, full_name, display_name, vorname, nachname, role, berufsbereich, city, hourly_rate, available, created_at, photo_url, verified, email')
+    .select('id, full_name, display_name, vorname, nachname, role, berufsbereich, city, hourly_rate, available, created_at, photo_url, verified, email, bio')
     .eq('status', 'approved')
     .order('created_at', { ascending: false })
     .limit(50)
@@ -209,6 +210,12 @@ export default async function AdminPage() {
                             >
                               Ansehen
                             </a>
+                            <AdminEditButton
+                              profileId={p.id}
+                              initialBio={p.bio || ''}
+                              initialRate={p.hourly_rate || 20}
+                              initialDisplayName={displayName}
+                            />
                             <AdminActions profileId={p.id} action="reject" label="Sperren" />
                           </div>
                         </td>
