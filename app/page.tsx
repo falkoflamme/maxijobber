@@ -17,6 +17,7 @@ export default function Home() {
           <div className="hidden md:flex items-center gap-10 text-sm font-semibold text-gray-400">
             <a href="#wie" className="hover:text-gray-900 transition">Wie es funktioniert</a>
             <a href="/mitmachen" className="hover:text-gray-900 transition">Für Fachkräfte</a>
+            <a href="/unternehmen/anmelden" className="hover:text-gray-900 transition">Für Unternehmen</a>
           </div>
           <div className="flex items-center gap-4">
             <a href="/profis" className="text-sm font-semibold text-gray-400 hover:text-gray-900 transition">Profis ansehen</a>

@@ -1,45 +1,41 @@
 import { createClient } from '@/lib/supabase/server'
+import { createServiceClient } from '@/lib/supabase/server'
 import { NextRequest, NextResponse } from 'next/server'
+
+const ADMIN_EMAILS = (process.env.ADMIN_EMAILS || 'admin@maxijobber.de').split(',')
 
 export async function GET(request: NextRequest) {
   const { searchParams, origin } = new URL(request.url)
   const code = searchParams.get('code')
-  const type = searchParams.get('type') as 'worker' | 'company' | null
+  const type = searchParams.get('type') as 'company' | null
 
   if (code) {
     const supabase = createClient()
     const { data: { user }, error } = await supabase.auth.exchangeCodeForSession(code)
 
     if (!error && user) {
-      // Check if profile exists
-      const { data: profile } = await supabase
-        .from('profiles')
-        .select('id, type, onboarding_complete')
-        .eq('user_id', user.id)
-        .single()
-
-      if (!profile) {
-        // New user — create profile with type from registration
-        const profileType = type || 'worker'
-        await supabase.from('profiles').insert({
-          user_id: user.id,
-          type: profileType,
-          full_name: user.email?.split('@')[0] || '',
-          city: 'Frankfurt',
-        })
-
-        const redirectPath = profileType === 'worker' ? '/profil/erstellen' : '/anfrage/neu'
-        return NextResponse.redirect(`${origin}${redirectPath}`)
+      // Admin check
+      if (ADMIN_EMAILS.includes(user.email || '')) {
+        return NextResponse.redirect(`${origin}/admin`)
       }
 
-      // Existing user
-      if (!profile.onboarding_complete) {
-        const redirectPath = profile.type === 'worker' ? '/profil/erstellen' : '/anfrage/neu'
-        return NextResponse.redirect(`${origin}${redirectPath}`)
+      // Company flow
+      if (type === 'company') {
+        const service = createServiceClient()
+        const { data: company } = await service
+          .from('company_profiles')
+          .select('id')
+          .eq('user_id', user.id)
+          .single()
+
+        if (!company) {
+          return NextResponse.redirect(`${origin}/unternehmen/einrichten`)
+        }
+        return NextResponse.redirect(`${origin}/unternehmen/dashboard`)
       }
 
-      const dashPath = profile.type === 'worker' ? '/dashboard/profi' : '/dashboard/unternehmen'
-      return NextResponse.redirect(`${origin}${dashPath}`)
+      // Default fallback
+      return NextResponse.redirect(`${origin}/`)
     }
   }
 
