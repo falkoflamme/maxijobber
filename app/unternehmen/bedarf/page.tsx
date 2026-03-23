@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
-const BEREICHE = ['Hotellerie & Gastronomie', 'Handwerk & Technik', 'Reinigung & Facility', 'Lager & Logistik', 'Büro & Verwaltung', 'Verkauf & Handel', 'Garten & Landschaft', 'Bau & Ausbau']
+const BEREICHE = ['Gastronomie & Hotellerie', 'Handel & Verkauf', 'Handwerk & Technik', 'Logistik & Transport', 'Büro & Verwaltung', 'IT & Digitales', 'Pflege & Gesundheit', 'Reinigung & Facility', 'Veranstaltung & Event', 'Sicherheit & Ordnung', 'Bildung & Soziales', 'Marketing & Kreativ']
 const MODELLE = ['Minijob', 'Kurzfristige Beschäftigung', 'Midijob', 'Teilzeit', 'Offen für mehrere Modelle']
 const WOCHENTAGE = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So']
 const TAGESZEITEN = ['Früh (6–14 Uhr)', 'Mittel (10–18 Uhr)', 'Spät (14–22 Uhr)', 'Nacht', 'Flexibel']

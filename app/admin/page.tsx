@@ -108,15 +108,15 @@ export default async function AdminPage() {
                         </div>
 
                         {/* Qualifikation */}
-                        {(p.ausbildung || p.erfahrung_stufe) && (
+                        {(p.ausbildung || p.berufspraxis) && (
                           <div className="flex flex-wrap gap-3 text-xs mb-3">
                             {p.ausbildung && (
                               <span className="px-2.5 py-1 bg-gray-100 border border-gray-200 font-semibold">
-                                {p.ausbildung}{p.ausbildungsberuf ? `: ${p.ausbildungsberuf}` : ''}
+                                {p.ausbildung}{p.abschluss ? `: ${p.abschluss}` : ''}
                               </span>
                             )}
-                            {p.erfahrung_stufe && (
-                              <span className="px-2.5 py-1 bg-gray-100 border border-gray-200 font-semibold">{p.erfahrung_stufe}</span>
+                            {p.berufspraxis && (
+                              <span className="px-2.5 py-1 bg-gray-100 border border-gray-200 font-semibold">{p.berufspraxis}</span>
                             )}
                           </div>
                         )}

@@ -15,8 +15,8 @@ export async function POST(request: NextRequest) {
     const city = formData.get('city') as string
     const mobil_einsetzbar = formData.get('mobil_einsetzbar') === 'true'
     const ausbildung = formData.get('ausbildung') as string
-    const ausbildungsberuf = formData.get('ausbildungsberuf') as string
-    const erfahrung_stufe = formData.get('erfahrung_stufe') as string
+    const abschluss = formData.get('abschluss') as string
+    const berufspraxis = formData.get('berufspraxis') as string
     const bio = formData.get('bio') as string
     const skillsRaw = formData.get('skills') as string
     const warum_tags_raw = formData.get('warum_tags') as string
@@ -98,8 +98,8 @@ export async function POST(request: NextRequest) {
         skills,
         hourly_rate,
         ausbildung: ausbildung || null,
-        ausbildungsberuf: ausbildungsberuf || null,
-        erfahrung_stufe: erfahrung_stufe || null,
+        abschluss: abschluss || null,
+        berufspraxis: berufspraxis || null,
         warum_tags,
         warum_freitext: warum_freitext || null,
         beschaeftigungsmodell,
@@ -143,7 +143,7 @@ export async function POST(request: NextRequest) {
               <tr><td style="padding:4px 12px 4px 0;color:#666">Rolle</td><td>${role} · ${berufsbereich || ''}</td></tr>
               <tr><td style="padding:4px 12px 4px 0;color:#666">Stadt</td><td>${city}</td></tr>
               <tr><td style="padding:4px 12px 4px 0;color:#666">Stundensatz</td><td>${hourly_rate} €/h</td></tr>
-              <tr><td style="padding:4px 12px 4px 0;color:#666">Erfahrung</td><td>${erfahrung_stufe || '—'}</td></tr>
+              <tr><td style="padding:4px 12px 4px 0;color:#666">Berufspraxis</td><td>${berufspraxis || '—'}</td></tr>
               <tr><td style="padding:4px 12px 4px 0;color:#666">E-Mail</td><td>${email}</td></tr>
               ${whatsapp ? `<tr><td style="padding:4px 12px 4px 0;color:#666">WhatsApp</td><td>${whatsapp}</td></tr>` : ''}
               ${phone ? `<tr><td style="padding:4px 12px 4px 0;color:#666">Telefon</td><td>${phone}</td></tr>` : ''}

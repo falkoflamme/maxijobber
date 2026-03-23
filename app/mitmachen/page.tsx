@@ -11,14 +11,18 @@ import type { Area } from 'react-easy-crop'
 // ── Data ─────────────────────────────────────────────────────────────────────
 
 const BERUFSFELDER: Record<string, string[]> = {
-  'Hotellerie & Gastronomie': ['Koch', 'Sous Chef', 'Chef de Partie', 'Commis de Cuisine', 'Head Waiter', 'Servicekraft', 'Barista', 'Bartender', 'Rezeptionist/in', 'Hausdame'],
+  'Gastronomie & Hotellerie': ['Koch', 'Sous Chef', 'Chef de Partie', 'Commis de Cuisine', 'Head Waiter', 'Servicekraft', 'Barista', 'Bartender', 'Rezeptionist/in', 'Hausdame'],
+  'Handel & Verkauf': ['Verkäufer/in', 'Kassierer/in', 'Merchandiser', 'Kundenberater/in'],
   'Handwerk & Technik': ['Elektriker', 'Klempner', 'Sanitärinstallateur', 'Maler & Lackierer', 'Schreiner', 'Trockenbauer', 'Fliesenleger', 'Metallbauer', 'Dachdecker'],
-  'Reinigung & Facility': ['Reinigungskraft', 'Hausmeister', 'Facility Manager', 'Hauswirtschaft', 'Gebäudereiniger'],
-  'Lager & Logistik': ['Lagerist', 'Staplerfahrer', 'Kommissionierer', 'Lagermitarbeiter'],
+  'Logistik & Transport': ['Lagerist', 'Staplerfahrer', 'Kommissionierer', 'Lagermitarbeiter', 'LKW-Fahrer/in'],
   'Büro & Verwaltung': ['Bürokraft', 'Sachbearbeiter/in', 'Sekretär/in', 'Empfang'],
-  'Verkauf & Handel': ['Verkäufer/in', 'Kassierer/in', 'Merchandiser', 'Kundenberater/in'],
-  'Garten & Landschaft': ['Gärtner/in', 'Landschaftspfleger/in', 'Grünpflege'],
-  'Bau & Ausbau': ['Maurer', 'Baufacharbeiter', 'Gerüstbauer', 'Bauhelfer'],
+  'IT & Digitales': ['Softwareentwickler/in', 'IT-Support', 'Web-/App-Entwickler/in', 'Datenpflege'],
+  'Pflege & Gesundheit': ['Pflegehilfskraft', 'Altenpfleger/in', 'Krankenpfleger/in', 'Betreuungskraft'],
+  'Reinigung & Facility': ['Reinigungskraft', 'Hausmeister', 'Facility Manager', 'Hauswirtschaft', 'Gebäudereiniger'],
+  'Veranstaltung & Event': ['Eventhelfer/in', 'Auf-/Abbauhelfer/in', 'Hostess / Host', 'Techniker/in'],
+  'Sicherheit & Ordnung': ['Sicherheitsdienst', 'Empfangssicherheit', 'Türsteher/in'],
+  'Bildung & Soziales': ['Erzieher/in', 'Sozialarbeiter/in', 'Nachhilfelehrer/in', 'Betreuungskraft'],
+  'Marketing & Kreativ': ['Grafiker/in', 'Texter/in', 'Social-Media-Manager/in', 'Fotograf/in'],
 }
 
 const ROLE_SKILLS: Record<string, string[]> = {
@@ -49,7 +53,8 @@ const BESCHAEFTIGUNGSMODELLE = ['Minijob', 'Kurzfristige Beschäftigung', 'Midij
 const WOCHENTAGE = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So']
 const TAGESZEITEN = ['Früh (6–14 Uhr)', 'Mittel (10–18 Uhr)', 'Spät (14–22 Uhr)', 'Nacht', 'Flexibel']
 const EINSATZDAUER_OPTIONS = ['Einzelne Schichten', '1–4 Wochen', 'Bis 3 Monate', 'Langfristig', 'Flexibel']
-const ERFAHRUNG_STUFEN = ['Unter 2 Jahre', '2–5 Jahre', '5–10 Jahre', '10+ Jahre']
+const ABSCHLUSS_OPTIONS = ['Ausbildung', 'Studium', 'Ausbildung + Berufserfahrung', 'Studium + Berufserfahrung', 'Viel Können, viel Erfahrung']
+const BERUFSPRAXIS_OPTIONS = ['Erfahren (2–5 Jahre)', 'Senior (5–10 Jahre)', 'Experte (10+ Jahre)']
 
 function generateDisplayName(vorname: string, nachname: string): string {
   if (!vorname) return ''
@@ -72,8 +77,8 @@ interface FormState {
   mobil_einsetzbar: boolean
   // Block 3 — Qualifikation
   ausbildung: string
-  ausbildungsberuf: string
-  erfahrung_stufe: string
+  abschluss: string
+  berufspraxis: string
   // Block 4 — Skills
   skills: string[]
   skillInput: string
@@ -102,7 +107,7 @@ interface FormState {
 const INITIAL: FormState = {
   vorname: '', nachname: '', display_name: '',
   berufsbereich: '', role: '', role_custom: '', city: 'Frankfurt', mobil_einsetzbar: false,
-  ausbildung: '', ausbildungsberuf: '', erfahrung_stufe: '',
+  ausbildung: '', abschluss: '', berufspraxis: '',
   skills: [], skillInput: '',
   bio: '', warum_tags: [], warum_freitext: '',
   beschaeftigungsmodell: [], verfuegbar_ab: '', wochentage: [], tageszeiten: [], einsatzdauer: '',
@@ -135,6 +140,21 @@ function YellowChip({ label, active, onClick }: { label: string; active: boolean
       className={`px-4 py-2.5 text-sm font-bold border-2 transition ${
         active ? 'border-yellow-500 bg-yellow-400 text-gray-900' : 'border-gray-500 text-gray-800 hover:border-yellow-500 hover:bg-yellow-50'
       }`}
+    >
+      {label}
+    </button>
+  )
+}
+
+function WarumChip({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`px-4 py-2.5 text-sm font-bold border-2 transition ${
+        active ? 'border-yellow-500 bg-yellow-400 text-gray-900' : 'hover:border-yellow-500 hover:bg-yellow-50'
+      }`}
+      style={active ? {} : { borderColor: '#6B7FA3', color: '#6B7FA3' }}
     >
       {label}
     </button>
@@ -378,7 +398,7 @@ export default function Mitmachen() {
 
   function canAdvance(): boolean {
     if (step === 1) return !!(form.vorname && form.nachname && form.display_name)
-    if (step === 2) return !!(form.berufsbereich && effectiveRole && form.city && form.ausbildung && form.erfahrung_stufe)
+    if (step === 2) return !!(form.berufsbereich && effectiveRole && form.city && form.abschluss && form.berufspraxis)
     if (step === 3) return !!(form.bio && form.beschaeftigungsmodell.length > 0 && form.hourly_rate && parseInt(form.hourly_rate) >= 20)
     return true
   }
@@ -418,8 +438,8 @@ export default function Mitmachen() {
     fd.append('city', form.city)
     fd.append('mobil_einsetzbar', String(form.mobil_einsetzbar))
     fd.append('ausbildung', form.ausbildung)
-    fd.append('ausbildungsberuf', form.ausbildungsberuf)
-    fd.append('erfahrung_stufe', form.erfahrung_stufe)
+    fd.append('abschluss', form.abschluss)
+    fd.append('berufspraxis', form.berufspraxis)
     fd.append('skills', form.skills.join(','))
     fd.append('bio', form.bio)
     fd.append('warum_tags', form.warum_tags.join(','))
@@ -610,28 +630,17 @@ export default function Mitmachen() {
 
               {/* Qualifikation */}
               <div className="bg-white border-2 border-[#1a1a1a] p-6">
-                <Label>Ausbildung *</Label>
+                <Label>Abschluss *</Label>
                 <div className="flex flex-wrap gap-2 mb-6">
-                  {['Ja, abgeschlossen', 'In Ausbildung', 'Nein, aber Berufserfahrung'].map(a => (
-                    <Chip key={a} label={a} active={form.ausbildung === a} onClick={() => set('ausbildung', a)} />
+                  {ABSCHLUSS_OPTIONS.map(a => (
+                    <Chip key={a} label={a} active={form.abschluss === a} onClick={() => set('abschluss', a)} />
                   ))}
                 </div>
 
-                {form.ausbildung === 'Ja, abgeschlossen' && (
-                  <div className="mb-6">
-                    <p className="text-xs text-gray-700 font-semibold mb-1.5">Ausbildungsberuf</p>
-                    <Input
-                      value={form.ausbildungsberuf}
-                      onChange={e => set('ausbildungsberuf', e.target.value)}
-                      placeholder="z.B. Koch, Elektriker, ..."
-                    />
-                  </div>
-                )}
-
-                <Label>Berufserfahrung *</Label>
+                <Label>Berufspraxis *</Label>
                 <div className="flex flex-wrap gap-2">
-                  {ERFAHRUNG_STUFEN.map(s => (
-                    <Chip key={s} label={s} active={form.erfahrung_stufe === s} onClick={() => set('erfahrung_stufe', s)} />
+                  {BERUFSPRAXIS_OPTIONS.map(s => (
+                    <Chip key={s} label={s} active={form.berufspraxis === s} onClick={() => set('berufspraxis', s)} />
                   ))}
                 </div>
               </div>
@@ -698,17 +707,17 @@ export default function Mitmachen() {
 
               {/* Warum den Stundenlohn wert */}
               <div className="bg-white border-2 border-[#1a1a1a] p-6">
-                <Label sub="Zeig kurz, warum du ohne lange Einarbeitung echten Mehrwert bringst.">Warum bist du deinen Stundenlohn wert? *</Label>
+                <Label sub="Hier ist deine Chance, dich zu verkaufen. Dieses Feld entscheidet, ob ein Unternehmen dich anschreibt oder nicht. Zeig warum du ohne lange Einarbeitung echten Mehrwert bringst.">Warum bist du deinen Stundenlohn wert? *</Label>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {WARUM_TAGS.map(t => (
-                    <YellowChip key={t} label={t} active={form.warum_tags.includes(t)}
+                    <WarumChip key={t} label={t} active={form.warum_tags.includes(t)}
                       onClick={() => toggleArray('warum_tags', t)} />
                   ))}
                 </div>
                 <Textarea
                   value={form.warum_freitext}
                   onChange={e => set('warum_freitext', e.target.value)}
-                  placeholder="Ergänzend in eigenen Worten..."
+                  placeholder="z.B. Ich bringe 8 Jahre Küchenerfahrung mit, kenne Spitzenzeiten und liefere vom ersten Tag an."
                   rows={2}
                   maxLength={200}
                 />

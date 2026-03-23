@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 }
 
 const CITIES = ['Alle', 'Frankfurt', 'Offenbach', 'Wiesbaden', 'Darmstadt', 'Mainz']
-const BEREICHE = ['Alle', 'Hotellerie & Gastronomie', 'Handwerk & Technik', 'Reinigung & Facility', 'Lager & Logistik', 'Büro & Verwaltung', 'Verkauf & Handel', 'Garten & Landschaft', 'Bau & Ausbau']
+const BEREICHE = ['Alle', 'Gastronomie & Hotellerie', 'Handel & Verkauf', 'Handwerk & Technik', 'Logistik & Transport', 'Büro & Verwaltung', 'IT & Digitales', 'Pflege & Gesundheit', 'Reinigung & Facility', 'Veranstaltung & Event', 'Sicherheit & Ordnung', 'Bildung & Soziales', 'Marketing & Kreativ']
 
 export default async function ProfisPage({
   searchParams,
@@ -25,7 +25,7 @@ export default async function ProfisPage({
 
   let query = supabase
     .from('profiles')
-    .select('id, full_name, display_name, role, berufsbereich, city, bio, skills, hourly_rate, photo_url, available, verified, erfahrung_stufe, beschaeftigungsmodell')
+    .select('id, full_name, display_name, role, berufsbereich, city, bio, skills, hourly_rate, photo_url, available, verified, berufspraxis, beschaeftigungsmodell')
     .eq('status', 'approved')
     .eq('verified', true)
     .order('available', { ascending: false })

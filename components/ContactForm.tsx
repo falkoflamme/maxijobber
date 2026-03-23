@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-const BEREICHE = ['Hotellerie & Gastronomie', 'Handwerk & Technik', 'Reinigung & Facility', 'Lager & Logistik', 'Büro & Verwaltung', 'Verkauf & Handel', 'Garten & Landschaft', 'Bau & Ausbau']
+const BEREICHE = ['Gastronomie & Hotellerie', 'Handel & Verkauf', 'Handwerk & Technik', 'Logistik & Transport', 'Büro & Verwaltung', 'IT & Digitales', 'Pflege & Gesundheit', 'Reinigung & Facility', 'Veranstaltung & Event', 'Sicherheit & Ordnung', 'Bildung & Soziales', 'Marketing & Kreativ']
 const MODELLE = ['Minijob', 'Kurzfristige Beschäftigung', 'Teilzeit', 'Offen']
 
 export default function ContactForm({ profileId, profileName }: { profileId: string; profileName: string }) {

@@ -39,7 +39,7 @@ export default async function ProfilPage({ params }: Props) {
     .select(`
       id, display_name, full_name, role, berufsbereich, city, bio, skills,
       hourly_rate, photo_url, available, verified,
-      ausbildung, ausbildungsberuf, erfahrung_stufe,
+      ausbildung, abschluss, berufspraxis,
       warum_tags, warum_freitext,
       beschaeftigungsmodell, verfuegbar_ab, wochentage, tageszeiten, einsatzdauer,
       mobil_einsetzbar, created_at
@@ -114,7 +114,7 @@ export default async function ProfilPage({ params }: Props) {
         </div>
 
         {/* Qualifikation */}
-        {(profile.ausbildung || profile.erfahrung_stufe) && (
+        {(profile.ausbildung || profile.berufspraxis) && (
           <div className="bg-white border-2 border-[#1a1a1a] p-6">
             <h2 className="text-xs font-black uppercase tracking-widest text-gray-400 mb-4">Qualifikation</h2>
             <div className="grid grid-cols-2 gap-4">
@@ -122,13 +122,13 @@ export default async function ProfilPage({ params }: Props) {
                 <div>
                   <div className="text-xs text-gray-400 font-semibold mb-1">Ausbildung</div>
                   <div className="text-sm font-black">{profile.ausbildung}</div>
-                  {profile.ausbildungsberuf && <div className="text-xs text-gray-500 font-medium mt-0.5">{profile.ausbildungsberuf}</div>}
+                  {profile.abschluss && <div className="text-xs text-gray-500 font-medium mt-0.5">{profile.abschluss}</div>}
                 </div>
               )}
-              {profile.erfahrung_stufe && (
+              {profile.berufspraxis && (
                 <div>
-                  <div className="text-xs text-gray-400 font-semibold mb-1">Berufserfahrung</div>
-                  <div className="text-sm font-black">{profile.erfahrung_stufe}</div>
+                  <div className="text-xs text-gray-400 font-semibold mb-1">Berufspraxis</div>
+                  <div className="text-sm font-black">{profile.berufspraxis}</div>
                 </div>
               )}
             </div>
