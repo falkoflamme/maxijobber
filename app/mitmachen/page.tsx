@@ -53,7 +53,7 @@ const BESCHAEFTIGUNGSMODELLE = ['Minijob', 'Kurzfristige Beschäftigung', 'Midij
 const WOCHENTAGE = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So']
 const TAGESZEITEN = ['Früh (6–14 Uhr)', 'Mittel (10–18 Uhr)', 'Spät (14–22 Uhr)', 'Nacht', 'Flexibel']
 const EINSATZDAUER_OPTIONS = ['Einzelne Schichten', '1–4 Wochen', 'Bis 3 Monate', 'Langfristig', 'Flexibel']
-const ABSCHLUSS_OPTIONS = ['Ausbildung', 'Studium', 'Ausbildung + Berufserfahrung', 'Studium + Berufserfahrung', 'Viel Können, viel Erfahrung']
+const ABSCHLUSS_OPTIONS = ['Ausbildung', 'Studium + Berufserfahrung', 'Viel Können, viel Erfahrung']
 const BERUFSPRAXIS_OPTIONS = ['Erfahren (2–5 Jahre)', 'Senior (5–10 Jahre)', 'Experte (10+ Jahre)']
 
 function generateDisplayName(vorname: string, nachname: string): string {
